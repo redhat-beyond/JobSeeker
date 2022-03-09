@@ -3,15 +3,19 @@
 **Job Seeker** is a web platform, built for people to post and find jobs.
 It might serve students, freelancers or organzations.
 
-## How To Run The Project
+---
 
-> NOTE: Depending on your OS, the commands in this README should be run with the following shells:
-> - *Windows:* on **cmd** or **Powershell**.
-> - *Linux:* on **terminal**.
+## 🏃 How To Run The Project
 
 ### Prerequisites
 
 You should install the following programs before proceeding:
+
+- #### Git (*Advised For Downloading This Project*)
+    > Git is a Version Control System (VCS) - the practice of tracking and managing changes to software code. Version control systems are software tools that help software teams manage changes to source code over time.
+
+    We will use Git to download this project in the steps below.
+    [Download Git Here!](https://git-scm.com/downloads)
 
 - #### VirtualBox
     > VirtualBox is a hypervisor, which lets us create and run virtual machines.
@@ -23,7 +27,7 @@ You should install the following programs before proceeding:
 - #### Vagrant
     > Vagrant is a tool for using virtual machines to share development environments.
     > Learn more about it [here](https://www.vagrantup.com/).
-    > 
+    
     Please make sure you have Vagrant installed on your computer, if not then install the latest version of Vagrant for your current operating system.
     [Download Vagrant Here!](https://www.vagrantup.com/downloads)
 
@@ -39,19 +43,13 @@ In order for it all to work, please enable **virtualization hardware** on your c
 On your computer:
 1. Navigate to the folder you wish to place the project at.
 
-2. Download the project, and enter its folder.
-   - In case you have [Git](https://git-scm.com/downloads) installed on your computer, then simply run:
-     ```sh
-     git clone https://github.com/redhat-beyond/Beyond-07-team-4
-     ```
-     Afterwards, enter the folder of the project by running:
-     ```sh
-     cd Beyond-07-team-4
-     ```
-   - Else, you can download the project like so:
-     1. Press the green "Code" button.
-     2. Press "Download ZIP".
-     ![](https://i.imgur.com/t6VtSva.png)
+2. Download the project by using Git, and enter its folder.
+
+   Run the commands:
+   ```sh
+   git clone https://github.com/redhat-beyond/JobSeeker
+   cd JobSeeker
+   ``` 
 
 #### Run The Application
 
@@ -61,4 +59,9 @@ vagrant up
 ```
 This will bring up Vagrant and Virtualbox, to start the application.
 > **ATTENTION:** If this is the first time you run this command, then a network connection is essential.
+
+---
+
+## 📝 Documentation
+More can be found [here!](docs)
 
