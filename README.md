@@ -1,7 +1,7 @@
 # Job Seeker
 
 **Job Seeker** is a web platform, built for people to post and find jobs.
-It might serve students, freelancers or organzations.
+It might serve students, freelancers or organizations.
 
 ---
 
@@ -32,28 +32,19 @@ You should install the following programs before proceeding:
     [Download Vagrant Here!](https://www.vagrantup.com/downloads)
 
 #### **ATTENTION:**
-In order for it all to work, please enable **virtualization hardware** on your computer. An explanation on how to do it can be found [here](https://www.virtualmetric.com/blog/how-to-enable-hardware-virtualization).
+Ensure **virtualization hardware** is enabled in BIOS settings. An explanation on how to do it can be found [here](https://www.virtualmetric.com/blog/how-to-enable-hardware-virtualization).
 
 ---
 
 ### Run The Project
 
 #### Download The Project
-
-On your computer:
-1. Navigate to the folder you wish to place the project at.
-
-2. Download the project by using Git, and enter its folder.
-
-   Run the commands:
-   ```sh
-   git clone https://github.com/redhat-beyond/JobSeeker
-   cd JobSeeker
-   ``` 
+```sh
+git clone https://github.com/redhat-beyond/JobSeeker
+cd JobSeeker
+``` 
 
 #### Run The Application
-
-Run the command:
 ```sh
 vagrant up
 ```
