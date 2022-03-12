@@ -5,7 +5,7 @@ It might serve students, freelancers or organizations.
 
 ---
 
-## 🏃 How To Run The Project
+## :runner: How To Run The Project
 
 ### Prerequisites
 
@@ -51,8 +51,10 @@ vagrant up
 This will bring up Vagrant and Virtualbox, to start the application.
 > **ATTENTION:** If this is the first time you run this command, then a network connection is essential.
 
+Afterwards, the web application will be presented on http://localhost:8000
+
 ---
 
-## 📝 Documentation
+## :memo: Documentation
 More can be found [here!](docs)
 
