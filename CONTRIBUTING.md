@@ -7,13 +7,14 @@ The following is a set of guidelines for contributing to JobSeeker and its packa
 
 #### Table Of Contents
 
-[Getting Started](#Getting-Started)
-  - [New Contributor Guide](#New-Contributor-Guide)
+- [Getting Started](#Getting-Started)
+    - [New Contributor Guide](#New-Contributor-Guide)
 
-[Issues & PRs](#Issues--PRs)
-  - [Creating New Issues & PRs](#Creating-New-Issues--PRs)
-  - [Issues](#Issues)
-  - [Pull Requests (PRs)](#Pull-Requests-PRs)
+- [Conventions](#Conventions)
+
+- [Issues & PRs](#Issues--PRs)
+    - [Issues](#Issues)
+    - [Pull Requests (PRs)](#Pull-Requests-PRs)
  
 ## Getting Started
 
@@ -29,13 +30,9 @@ Here are some resources to help you get started with open source contributions:
 - [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow)
 - [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
 
-## Issues & PRs
+## Conventions
 
-When contributing to this repository, please first discuss the change you wish to make via an issue.
-
-### Creating New Issues & PRs
-
-#### Consider Starting The **Issue / PR Title** With An Applicable **Emoji**
+### Consider Starting The **Issue / Commit / PR Title** With An Applicable **Emoji**
 
 These are the conventional emojis for our project:
 
@@ -49,34 +46,45 @@ Name|Emoji|Text Of Emoji To Provide|When To Use|
 
 The *"Text Of Emoji To Provide"* should be the first word in the title.
 
-#### For Example:
+#### Examples
 
-The PR title of:
-```
-:memo: Updating `README.md`'s Description
-```
-Will look like this:
-![](https://i.imgur.com/pNGetUm.png)
+- The PR title of:
+    ```
+    :memo: Updating `README.md`'s Description
+    ```
+    Will look like this:
+    ![](https://i.imgur.com/pNGetUm.png)
+
+- The commit title of:
+    ```
+    :memo: Adding A `CONTRIBUTING.md` File
+    ```
+    Will look like this:
+    ![](https://i.imgur.com/DfOnEPK.png)
+
+## Issues & PRs
+
+When contributing to this repository, please first discuss the change you wish to make via an issue.
 
 ### Issues
 
 #### Create A New Issue
 If you spot a problem with the docs, search if an issue already exists. If a related issue doesn't exist, you can open a new issue.
 
-#### Creating A New **Issue** That Contains **Many Tasks** Required To Be Done
+- #### Creating A New **Issue** That Contains **Many Tasks** Required To Be Done
   If that is the case, then consider making a separate *"checkbox"* for each task.
 
-#### For Example:
-The issue content of:
-```
-We need to complete the following tasks to be able to make coffee:
-  - [X] Buy coffee.
-  - [ ] Buy milk.
-  - [ ] Boil water.
-```
-Will look like this:
+    #### Example
+    The issue content of:
+    ```
+    We need to complete the following tasks to be able to make coffee:
+      - [X] Buy coffee.
+      - [ ] Buy milk.
+      - [ ] Boil water.
+    ```
+    Will look like this:
 
-![](https://i.imgur.com/zr3acoh.png)
+    ![](https://i.imgur.com/zr3acoh.png)
 
 #### Solve An Issue
 Scan through our existing issues to find one that interests you. You can narrow down the search using labels as filters, or a specific word in the issue title. If you find an issue to work on, you are welcome to open a PR with a fix.
