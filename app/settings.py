@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'jobseeker.apps.JobseekerConfig',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'feed.apps.FeedConfig',
 ]
 
 MIDDLEWARE = [
