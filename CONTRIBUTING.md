@@ -4,6 +4,7 @@
 
 The following is a set of guidelines for contributing to JobSeeker and its packages, which are hosted in the [RedHat-Beyond](https://github.com/redhat-beyond) Organization on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
+You are welcome to contact us through slack, with link #os-07-group4 on [beyond slack](redhat-beyond.slack.com).
 
 #### Table Of Contents
 
@@ -100,6 +101,7 @@ Once your changes are ready, don't forget to self-review to speed up the review 
 
 When you're finished with the changes, create a pull request, also known as a PR.
 
+- Verify the PR is ready for Core Review, and please elaborate what actions needed.
 - Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.
 - Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
 Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request for additional information.
