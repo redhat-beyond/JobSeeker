@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def personal_profile(request):
+    return render(request, 'personal_profile/personal_profile.html')
