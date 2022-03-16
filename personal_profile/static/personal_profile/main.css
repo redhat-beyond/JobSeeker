@@ -1,0 +1,16 @@
+body {
+    background: #F0F2F5;
+    color: black;
+}
+
+.navbar {
+    background-color: #77B08D;
+    border-bottom: solid 1px gray;
+}
+
+footer {
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+}
