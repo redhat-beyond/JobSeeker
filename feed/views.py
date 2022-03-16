@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .models import Post
 
-# Create your views here.
+
+def feed(request):
+    context = {
+        'posts': Post.posts.main_feed()
+    }
+    return render(request, 'feed/feed.html', context)
