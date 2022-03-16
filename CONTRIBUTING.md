@@ -22,7 +22,9 @@ You are welcome to contact us through slack, with link #os-07-group4 on [beyond 
 - [kasemAlem](https://github.com/kasemAlem)
 - [rrasouli](https://github.com/rrasouli)
 
-#### Table Of Contents
+---
+
+## Table Of Contents
 
 - [Getting Started](#Getting-Started)
     - [New Contributor Guide](#New-Contributor-Guide)
@@ -33,6 +35,8 @@ You are welcome to contact us through slack, with link #os-07-group4 on [beyond 
     - [Issues](#Issues)
     - [Pull Requests (PRs)](#Pull-Requests-PRs)
  
+---
+
 ## Getting Started
 
 - To get an overview of the project, read the [README](README.md).
