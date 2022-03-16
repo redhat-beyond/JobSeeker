@@ -1,5 +1,7 @@
 # Job Seeker
 
+<img src='https://svgshare.com/i/fFV.svg' />
+
 **Job Seeker** is a web platform, built for people to post and find jobs.
 It might serve students, freelancers or organizations.
 
