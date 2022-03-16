@@ -4,7 +4,23 @@
 
 The following is a set of guidelines for contributing to JobSeeker and its packages, which are hosted in the [RedHat-Beyond](https://github.com/redhat-beyond) Organization on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
+## Contact
+
 You are welcome to contact us through slack, with link #os-07-group4 on [beyond slack](redhat-beyond.slack.com).
+
+### Our Team
+
+- [taljacob2](https://github.com/taljacob2)
+- [paOmer](https://github.com/paOmer)
+- [ShirleyFichman](https://github.com/ShirleyFichman)
+- [DeanBiton](https://github.com/DeanBiton)
+- [amittcohen](https://github.com/amittcohen)
+
+#### Our Mentors
+
+- [Yarboa](https://github.com/Yarboa)
+- [kasemAlem](https://github.com/kasemAlem)
+- [rrasouli](https://github.com/rrasouli)
 
 #### Table Of Contents
 
@@ -93,6 +109,8 @@ Scan through our existing issues to find one that interests you. You can narrow 
 
 #### Commit Your Update
 
+[Use Flake8 along your code](docs/Flake8.md#How-To-Use-Flake8-Along-Your-Code) before commiting, and verify it passes all assertions.
+
 Commit the changes once you are happy with them.
 
 Once your changes are ready, don't forget to self-review to speed up the review process :zap:.
@@ -103,8 +121,32 @@ When you're finished with the changes, create a pull request, also known as a PR
 
 - Verify the PR is ready for Core Review, and please elaborate what actions needed.
 - Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.
-- Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
-Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request for additional information.
-- We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
+- Every PR requires at least 2 approvals from our reviewers. You are welcome to assign all of [our team](#our-team) to review your PR. After the review, [our mentors](#our-mentors) will be able to merge the PR.
+- **Write a good PR description:**
+
+  Please note in the PR's description:
+    - *What changes did you make.*
+    
+        Especially in case of:
+        - Renaming or removal of files / folders / methods / constants.
+    - *In case of a **big** change:*
+        - A simple and short guide of how to navigate / use your new feature.
+          If possible, we prefer you to add a separate markdown file in the [docs](docs) folder. You can also use embedded [mermaid](https://mermaid-js.github.io/) in that markdown, or link to a [mermaid.live](https://mermaid.live/) diagram you have made - either on the PR's description or on a markdown.
+    - *In case of a **frontend** change:*
+        - Add some screenshots of what you have updated.
+    - *(Optional):*
+        - Hyper-link additional information to assist the reviewers.
+    - **At the bottom of the description:**
+        - Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
+            > For example, in case your PR closes the #2 issue, you should add the following line to your PR's description:
+            > ```
+            > Close #2
+            > ```
+        - In case your PR depends on a PR that wasn't merged yet, you should note that in your PR's description, by linking to the PR it depends on. Our convention here is to mention the keyword of `DEPENDS ON` for that matter.
+            > For example, in case your PR depends on the #1 PR, you should add the following line to your PR's description:
+            > ```
+            > DEPENDS ON #1
+            > ```
+- Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request for additional information. We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
 - As you update your PR and apply changes, mark each conversation as [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
 - If you run into any merge issues, checkout this [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to help you resolve merge conflicts and other issues.
