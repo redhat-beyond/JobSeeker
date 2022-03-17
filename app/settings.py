@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'jobseeker.apps.JobseekerConfig',
     'django.contrib.staticfiles',
     'job_board.apps.JobBoardConfig',
+    'feed.apps.FeedConfig',
 ]
 
 MIDDLEWARE = [
