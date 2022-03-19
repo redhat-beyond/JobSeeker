@@ -12,7 +12,7 @@ class PersonalProfile(models.Model):
     company= models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about= models.TextField() 
-    birth_date= models.CharField(max_length=11, default='00/00/0000') #maybe change to date later-on 
+    birth_date= models.DateField()
     profile_pic= models.ImageField(null=True, blank=True)
   #  resume=
   
