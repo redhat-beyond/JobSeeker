@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'jobseeker.apps.JobseekerConfig',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'job_board.apps.JobBoardConfig',
 ]
 
 MIDDLEWARE = [
