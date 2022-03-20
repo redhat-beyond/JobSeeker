@@ -1,4 +1,4 @@
-from tkinter.tix import Tree
+# from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,7 +9,7 @@ class ProfileManager(models.Manager):
 
 
 class PersonalProfile(models.Model):
-    company= models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField()
     birth_date = models.DateField()
@@ -17,5 +17,4 @@ class PersonalProfile(models.Model):
     resume = models.FileField(null=True, upload_to='resumes')
 
     def __str__(self):
-      return f'{self.user.username} Profile'
-
+        return f'{self.user.username} Profile'
