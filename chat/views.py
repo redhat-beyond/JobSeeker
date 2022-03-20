@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def chat_fullscreen(request):
+    return render(request, 'chat_fullscreen.html')
