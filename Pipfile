@@ -10,6 +10,7 @@ pytest = "*"
 [dev-packages]
 flake8 = "*"
 pytest-django = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.9"
