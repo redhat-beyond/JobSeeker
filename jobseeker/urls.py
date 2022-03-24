@@ -8,5 +8,5 @@ urlpatterns = [
     # path('', include('job_board.urls')),
     path('', include('personal_profile.urls')),
     # path('', include('chat.urls')),
-    # path('', include('login.urls')),
+    path('', include('login.urls')),
 ]

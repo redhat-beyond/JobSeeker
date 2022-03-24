@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'jobseeker.apps.JobseekerConfig',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'login.apps.LoginConfig'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'jobseeker', 'templates', 'jobseeker')],
+                 os.path.join(BASE_DIR, 'jobseeker', 'templates', 'jobseeker'),
+                 os.path.join(BASE_DIR, 'login', 'templates', 'login')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
