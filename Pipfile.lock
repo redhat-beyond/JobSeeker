@@ -1,11 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
-            "sha256": "5aea17aa8fb0084f06b0564080f0249f21a6f47c3712e61411dceb2442c7e3d0"
-=======
             "sha256": "d47207483de1048870659f1b899ed7408e05a7696ebb4faaf1ec01c6e6d41822"
->>>>>>> 4a0b38a (Added Test For Routing)
         },
         "pipfile-spec": 6,
         "requires": {
