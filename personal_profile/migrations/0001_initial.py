@@ -23,6 +23,10 @@ class Migration(migrations.Migration):
                 ('about', models.TextField()),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
                                               to=settings.AUTH_USER_MODEL)),
+                ('birth_date', models.DateField()),
+                ('profile_pic',
+                 models.ImageField(blank=True, null=True, upload_to='')),
+                ('resume', models.FileField(null=True, upload_to='resumes')),
             ],
         ),
     ]
