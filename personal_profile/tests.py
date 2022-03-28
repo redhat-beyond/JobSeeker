@@ -1,3 +1,6 @@
-# from django.test import TestCase
+import pytest
+import django.contrib.auth
 
-# Create your tests here.
+def test_profile_app_entrypoint(client):
+    response = client.get("/profile/")
+    assert response.status_code == 200
