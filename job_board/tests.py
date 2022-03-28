@@ -7,13 +7,15 @@ import pytest
 
 @pytest.fixture
 def create_data_models_instances():
-    JobType.objects.create(text='Chef')
-    Location.objects.create(name='Eilat', latitude=29.559191910075217, longitude=34.95283437084102)
-    YearsOfExperience.objects.create(text='5-10 years')
-    Preference.objects.create(
+    job_type = JobType.objects.create(text='Chef')
+    location = Location.objects.create(name='Eilat', latitude=29.559191910075217, longitude=34.95283437084102)
+    yoe = YearsOfExperience.objects.create(text='5-10 years')
+    pref = Preference.objects.create(
         job_type=JobType.objects.first(),
         location=Location.objects.first(),
         years_of_experience=YearsOfExperience.objects.first())
+
+    return [job_type, location, yoe, pref]
 
 
 @pytest.mark.usefixtures("create_data_models_instances")
@@ -32,24 +34,20 @@ class TestJobBoardModels:
             location=Location.objects.first(),
             years_of_experience=YearsOfExperience.objects.first()).exists()
 
-    def test_data_deletion(self):
-        JobType.objects.filter(text='Web developer').delete()
-        assert not JobType.objects.filter(text='Web developer').exists()
+    def test_data_deletion(self, create_data_models_instances):
+        job_type = create_data_models_instances[0]
+        location = create_data_models_instances[1]
+        years_of_experience = create_data_models_instances[2]
+        preference = create_data_models_instances[3]
 
-        Location.objects.filter(name='Haifa', latitude=32.804135934085565, longitude=34.98975968417104).delete()
-        assert not Location.objects.filter(
-            name='Haifa',
-            latitude=32.804135934085565,
-            longitude=34.98975968417104).exists()
+        job_type.delete()
+        assert job_type not in JobType.objects.all()
 
-        YearsOfExperience.objects.filter(text='0-2 years').delete()
-        assert not YearsOfExperience.objects.filter(text='0-2 years').exists()
+        location.delete()
+        assert location not in Location.objects.all()
 
-        Preference.objects.filter(
-            job_type=JobType.objects.first(),
-            location=Location.objects.first(),
-            years_of_experience=YearsOfExperience.objects.first()).delete()
-        assert not Preference.objects.filter(
-            job_type=JobType.objects.first(),
-            location=Location.objects.first(),
-            years_of_experience=YearsOfExperience.objects.first()).exists()
+        years_of_experience.delete()
+        assert years_of_experience not in YearsOfExperience.objects.all()
+
+        preference.delete()
+        assert preference not in Preference.objects.all()
