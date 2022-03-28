@@ -11,8 +11,8 @@ POST_CONTENT = "Some first post content here"
 
 @pytest.fixture
 def users(db):
-    user0 = User.objects.create_user('John Doe', password='pass123')
-    user1 = User.objects.create_user('Jane Doe', password='pass321')
+    user0 = User.objects.create_user('user1', password='pass123')
+    user1 = User.objects.create_user('user2', password='pass321')
     return [user0, user1]
 
 
