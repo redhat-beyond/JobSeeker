@@ -2,11 +2,13 @@
 
 from django.db import migrations
 
+
 def saving_profiles(apps, schema_editor):
     PersonalProfile = apps.get_model('personal_profile', 'PersonalProfile')
     for profile in PersonalProfile.objects.all():
         profile.save()
-        
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -14,5 +16,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-         migrations.RunPython(saving_profiles),
+        migrations.RunPython(saving_profiles),
     ]
