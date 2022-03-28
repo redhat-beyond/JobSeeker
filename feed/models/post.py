@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .postManager import PostManager
+from job_board.models.preference import Preference
 
 
 class Post(models.Model):
@@ -11,6 +12,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     is_job_offer = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name="likes")
+    prefernces = models.ForeignKey(Preference, on_delete=models.SET_NULL, null=True)
     posts = PostManager()
 
     def __str__(self):
