@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'jobseeker.apps.JobseekerConfig',
     'django.contrib.staticfiles',
-    'login.apps.LoginConfig'
+    'login.apps.LoginConfig',
     'job_board.apps.JobBoardConfig',
     'feed.apps.FeedConfig',
 ]
