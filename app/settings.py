@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'jobseeker.apps.JobseekerConfig',
     'django.contrib.staticfiles',
+    'login.apps.LoginConfig',
     'job_board.apps.JobBoardConfig',
     'feed.apps.FeedConfig',
 ]
@@ -60,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'jobseeker', 'templates', 'jobseeker'),
+                 os.path.join(BASE_DIR, 'login', 'templates', 'login'),
                  os.path.join(BASE_DIR, 'chat', 'templates', 'chat')],
         'APP_DIRS': True,
         'OPTIONS': {
