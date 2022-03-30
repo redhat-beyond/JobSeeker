@@ -1,5 +1,6 @@
 import pytest
 import django.contrib.auth
+from django.db import models
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -21,10 +22,10 @@ def user_1(db):
 @pytest.fixture()
 def profile_1(db, user_1):
     profile_1 = PersonalProfile(company='Test Company', user=user_1, about='Test About',
-                                birth_date='2006-10-25', profile_pic=SimpleUploadedFile(name='test_image.jpg',
-                                content=open(IMAGE_PATH, 'rb').read(), content_type='image/jpeg'),
+                                birth_date= models.DateField(1995, 12, 10), profile_pic=SimpleUploadedFile(name='test_image.jpg',
+                                                                                        content=open(IMAGE_PATH, 'rb').read(), content_type='image/jpeg'),
                                 resume=SimpleUploadedFile('test_resume.txt',
-                                                         b'these are the contents of the txt file'))
+                                                          b'these are the contents of the txt file'))
     return profile_1
 
 
@@ -35,6 +36,6 @@ class TestProfileModel:
         assert profile_1.company == 'Test Company'
         assert profile_1.user == user_1
         assert profile_1.about == 'Test About'
-        assert profile_1.birth_date == '2006-10-25'
+        assert profile_1.birth_date == models.DateField(1995, 12, 10)
         assert profile_1.profile_pic is not None
         assert profile_1.resume is not None
