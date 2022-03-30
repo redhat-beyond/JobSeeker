@@ -64,7 +64,6 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'jobseeker', 'templates', 'jobseeker'),
                  os.path.join(BASE_DIR, 'login', 'templates', 'login'),
                  os.path.join(BASE_DIR, 'chat', 'templates', 'chat'),
-                 os.path.join(BASE_DIR, 'chat', 'templates', 'chat'),
                  os.path.join(BASE_DIR, 'personal_profile', 'templates',
                               'personal_profile')],
         'APP_DIRS': True,

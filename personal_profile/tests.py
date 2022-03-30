@@ -22,7 +22,7 @@ def user_1(db):
 @pytest.fixture()
 def profile_1(db, user_1):
     profile_1 = PersonalProfile(company='Test Company', user=user_1, about='Test About',
-                                birth_date=models.DateField(1995, 12, 10),
+                                birth_date=str(models.DateField(1995, 12, 10)),
                                 profile_pic=SimpleUploadedFile(name='test_image.jpg',
                                                                content=open(IMAGE_PATH, 'rb').read(),
                                                                content_type='image/jpeg'),
@@ -38,6 +38,6 @@ class TestProfileModel:
         assert profile_1.company == 'Test Company'
         assert profile_1.user == user_1
         assert profile_1.about == 'Test About'
-        assert profile_1.birth_date == models.DateField(1995, 12, 10)
+        assert str(profile_1.birth_date) == str(models.DateField(1995, 12, 10))
         assert profile_1.profile_pic is not None
         assert profile_1.resume is not None

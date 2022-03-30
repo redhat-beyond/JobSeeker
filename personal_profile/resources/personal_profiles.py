@@ -18,6 +18,14 @@ PERSONAL_PROFILES = [
     ],
     [
         'Blank',
+        'John Doe',
+        'Web page designing is my greates passion, django specialist and a people person',
+        models.DateField(1995, 12, 10),
+        'personal_profile/static/personal_profile/images/profile_pics/jane.jpg',
+        'personal_profile/static/personal_profile/images/resumes/billgates_resume.jpg',
+    ],
+    [
+        'Blank',
         'Jane Doe',
         'Web page designing is my greates passion, django specialist and a people person',
         models.DateField(1995, 12, 10),
