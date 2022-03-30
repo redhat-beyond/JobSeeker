@@ -12,7 +12,7 @@ PERSONAL_PROFILES = [
         'Apple',
         'Tim Cook',
         'Im the CEO of Apple, and honestly Im just the guy everyone calls Steve Jobs',
-         datetime.date(1960, 11, 1),
+        datetime.date(1960, 11, 1),
         'personal_profile/static/personal_profile/images/profile_pics/timcook.jpg',
         'personal_profile/static/personal_profile/images/resumes/billgates_resume.jpg',
     ],
