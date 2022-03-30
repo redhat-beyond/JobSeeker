@@ -2,7 +2,7 @@ import datetime
 PERSONAL_PROFILES = [
     [
         'Microsoft',
-        'Bil Gates',
+        'Bill Gates',
         'Im a co-founder of microsoft, and have been the richest guy in the world for a while...',
         datetime.date(1955, 10, 28),
         'personal_profile/static/personal_profile/images/profile_pics/billgates.jpg',
