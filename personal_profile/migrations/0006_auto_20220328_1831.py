@@ -1,5 +1,4 @@
 from django.db import migrations
-from django.db import models
 from personal_profile.models import PersonalProfile
 from personal_profile.resources.personal_profiles import PERSONAL_PROFILES
 import django.contrib.auth
