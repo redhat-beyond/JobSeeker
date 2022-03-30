@@ -22,8 +22,10 @@ def user_1(db):
 @pytest.fixture()
 def profile_1(db, user_1):
     profile_1 = PersonalProfile(company='Test Company', user=user_1, about='Test About',
-                                birth_date= models.DateField(1995, 12, 10), profile_pic=SimpleUploadedFile(name='test_image.jpg',
-                                                                                        content=open(IMAGE_PATH, 'rb').read(), content_type='image/jpeg'),
+                                birth_date=models.DateField(1995, 12, 10),
+                                profile_pic=SimpleUploadedFile(name='test_image.jpg',
+                                                               content=open(IMAGE_PATH, 'rb').read(),
+                                                               content_type='image/jpeg'),
                                 resume=SimpleUploadedFile('test_resume.txt',
                                                           b'these are the contents of the txt file'))
     return profile_1

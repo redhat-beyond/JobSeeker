@@ -23,9 +23,7 @@ class Migration(migrations.Migration):
                                                content=open(profile[4], 'rb').read(), content_type='image/jpeg'),
                                                resume=SimpleUploadedFile(name='resume.jpg',
                                                                          content=open(profile[5], 'rb').read(),
-                                                                         content_type='image/jpeg'),
-                                                                         )
-
+                                                                         content_type='image/jpeg'),)
 
     operations = [
         migrations.RunPython(generate_personal_profiles),
