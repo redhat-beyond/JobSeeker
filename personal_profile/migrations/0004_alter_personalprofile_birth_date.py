@@ -2,6 +2,7 @@
 
 from django.db import migrations, models
 
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -12,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='personalprofile',
             name='birth_date',
-            field= models.DateField(),
+            field=models.DateField(),
         ),
     ]
