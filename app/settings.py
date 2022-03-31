@@ -140,3 +140,5 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'personal_profile/static/personal_profile/images')
+
+LOGIN_REDIRECT_URL = '/about/'
