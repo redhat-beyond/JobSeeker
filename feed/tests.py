@@ -210,3 +210,8 @@ class TestPostCommentRelation:
         comments[0].delete()
         assert comments[0] not in Comment.comments.all()
         assert post0 in Post.posts.main_feed()
+
+
+def test_feed_app_entrypoint(client):
+    response = client.get("")
+    assert response.status_code == 200
