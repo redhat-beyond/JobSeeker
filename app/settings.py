@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',
     'job_board.apps.JobBoardConfig',
     'feed.apps.FeedConfig',
+    'personal_profile.apps.PersonalProfileConfig',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,9 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'jobseeker', 'templates', 'jobseeker'),
                  os.path.join(BASE_DIR, 'login', 'templates', 'login'),
-                 os.path.join(BASE_DIR, 'chat', 'templates', 'chat')],
+                 os.path.join(BASE_DIR, 'chat', 'templates', 'chat'),
+                 os.path.join(BASE_DIR, 'personal_profile', 'templates',
+                              'personal_profile')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,3 +132,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'personal_profile/static/personal_profile/images')
