@@ -1,6 +1,35 @@
-# Job Seeker
 
-<img src='https://svgshare.com/i/fFV.svg' />
+<p align="center">
+    <a href="https://github.com/redhat-beyond">
+        <img alt="Red Hat" src="https://img.shields.io/badge/Red%20Hat-EE0000?style=flat&logo=redhat&logoColor=white">
+    </a>
+    <a href="https://git-scm.com/">
+        <img alt="Git" src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white">
+    </a>
+    <a href="https://www.vagrantup.com/">
+        <img alt="Vagrant" src="https://img.shields.io/badge/vagrant-%231563FF.svg?style=flat&logo=vagrant&logoColor=white">
+    </a>
+    <a href="https://www.djangoproject.com/">
+        <img alt="Django" src="https://img.shields.io/badge/django-%23092E20.svg?style=flat&logo=django&logoColor=white">
+    </a>
+    <a href="https://slack.com/">
+        <img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white">
+    </a>
+    <a href="https://github.com/redhat-beyond/JobSeeker/blob/main/LICENSE">
+        <img alt="LICENSE" src="https://img.shields.io/github/license/redhat-beyond/JobSeeker?style=flat">
+    </a>
+    <a href="https://github.com/redhat-beyond/JobSeeker/pulls">
+        <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/redhat-beyond/JobSeeker?style=flat">
+    </a>
+    <a href="https://github.com/redhat-beyond/JobSeeker/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/redhat-beyond/JobSeeker?style=flat">
+    </a>
+</p>
+
+<p align="center">
+    <img src='https://svgshare.com/i/fFV.svg' height="130"/>
+</p>
+
 
 **Job Seeker** is a web platform, built for people to post and find jobs.
 It might serve students, freelancers or organizations.
