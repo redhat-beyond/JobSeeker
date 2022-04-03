@@ -19,9 +19,9 @@ class Migration(migrations.Migration):
                                                user=User.objects.filter(username=profile[1]).first(),
                                                about=profile[2],
                                                birth_date=profile[3],
-                                               profile_pic=SimpleUploadedFile(name='profile_image.jpg',
+                                               profile_pic=SimpleUploadedFile(name='profile_image_' + profile[1] + '.jpg',
                                                content=open(profile[4], 'rb').read(), content_type='image/jpeg'),
-                                               resume=SimpleUploadedFile(name='resume.jpg',
+                                               resume=SimpleUploadedFile(name='resume_' + profile[1] + '.jpg',
                                                                          content=open(profile[5], 'rb').read(),
                                                                          content_type='image/jpeg')).save()
 
