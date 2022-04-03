@@ -30,14 +30,33 @@ def profile_1(db, user_1):
                                                           b'these are the contents of the txt file'))
     return profile_1
 
-
+@pytest.mark.django_db
 class TestProfileModel:
-    # Testing different Personal Profile attributes
+    # Testing different Personal Profile saving and deletation
 
-    def test_newprofile(self, profile_1, user_1):
+    def test_save_newprofile(self, profile_1, user_1):
         assert profile_1.company == 'Test Company'
         assert profile_1.user == user_1
         assert profile_1.about == 'Test About'
         assert profile_1.birth_date == datetime.date(1995, 12, 10)
         assert profile_1.profile_pic is not None
         assert profile_1.resume is not None
+    
+    def test_personalprofile_delete(self, profile_1):
+        profile_1.save()
+        assert profile_1 in PersonalProfile.objects.all()
+        profile_1.delete()
+        assert profile_1 not in PersonalProfile.objects.all()
+
+
+@pytest.mark.django_db
+class TestProfileUserRelation:
+    # Testing personal profile model and user relation
+
+    def test_remove_user_profile(self, profile_1, user_1):
+        profile_1.save()
+        user_1.delete()
+        assert profile_1 not in PersonalProfile.objects.all()
+
+
+
