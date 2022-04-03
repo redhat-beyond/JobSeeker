@@ -86,6 +86,23 @@ Afterwards, the web application will be presented on http://localhost:8000
 
 ---
 
+## How To Remove The Project
+
+- #### Destroy The Vagrant VM
+    Run the command:
+    ```sh
+    vagrant destroy
+    ```
+    After running the last command, the terminal will prompt the following:
+    ```sh
+    default: Are you sure you want to destroy the 'default' VM? [y/N]
+    ```
+    Type: ` y `
+
+- #### Delete The Project Root Directory
+    Locate the project root directory on your computer and delete it.
+---
+
 ## :memo: Documentation
 More can be found [here!](docs)
 
