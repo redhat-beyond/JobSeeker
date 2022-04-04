@@ -13,7 +13,7 @@ class PersonalProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField()
     birth_date = models.DateField(null=True)
-    profile_pic = models.ImageField(null=True, blank=True)
+    profile_pic = models.ImageField(null=True, blank=True, upload_to='profile_pics')
     resume = models.FileField(null=True, upload_to='resumes')
 
     def __str__(self):
