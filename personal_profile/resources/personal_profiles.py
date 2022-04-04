@@ -13,8 +13,13 @@ PERSONAL_PROFILES = [
         'Tim Cook',
         'Im the CEO of Apple, and honestly Im just the guy everyone calls Steve Jobs',
         datetime.date(1960, 11, 1),
+<<<<<<< HEAD
         'personal_profile/static/personal_profile/images/profile_pics/timcook.jpg',
         'personal_profile/static/personal_profile/images/resumes/billgates_resume.jpg',
+=======
+        'personal_profile/static/personal_profile/images/profile_pics/image_Tim_Cook.jpg',
+        'personal_profile/static/personal_profile/images/resumes/resume_Tim_Cook.jpg',
+>>>>>>> 453cfce (updating according to flake8)
     ],
     [
         'Blank',
