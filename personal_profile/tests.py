@@ -5,7 +5,7 @@ from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-IMAGE_PATH = 'personal_profile/static/personal_profile/images/test_image.jpg'
+IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 User = django.contrib.auth.get_user_model()
 
 
@@ -33,9 +33,9 @@ def profile_1(db, user_1):
 
 @pytest.mark.django_db
 class TestProfileModel:
-    # Testing different Personal Profile saving and deletation
+    # Testing different Personal Profile saving and deletion
 
-    def test_save_newprofile(self, profile_1, user_1):
+    def test_profile_is_saved_correctly(self, profile_1, user_1):
         assert profile_1.company == 'Test Company'
         assert profile_1.user == user_1
         assert profile_1.about == 'Test About'
@@ -43,7 +43,7 @@ class TestProfileModel:
         assert profile_1.profile_pic is not None
         assert profile_1.resume is not None
 
-    def test_personalprofile_delete(self, profile_1):
+    def test_profile_is_deleted(self, profile_1):
         profile_1.save()
         assert profile_1 in PersonalProfile.objects.all()
         profile_1.delete()
@@ -54,8 +54,7 @@ class TestProfileModel:
 class TestProfileUserRelation:
     # Testing personal profile model and user relation
 
-    def test_remove_user_profile(self, profile_1, user_1):
+    def test_profile_is_deleted_when_user_is_deleted(self, profile_1, user_1):
         profile_1.save()
         user_1.delete()
         assert profile_1 not in PersonalProfile.objects.all()
-
