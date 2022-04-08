@@ -1,4 +1,10 @@
 {% extends "jobseeker/base_template.html" %}
 {% block content %}
-    <h1>feed</h1>
+
+    <div class="pt-5">
+        {% for post in posts %}
+            {% include "feed/post.html" %}
+        {% endfor %}
+    </div>
+
 {% endblock content %}
