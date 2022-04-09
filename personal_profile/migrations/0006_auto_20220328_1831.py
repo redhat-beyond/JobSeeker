@@ -1,9 +1,9 @@
+import datetime
 from django.db import migrations, transaction
 from personal_profile.models import PersonalProfile
 import django.contrib.auth
 from django.core.files.uploadedfile import SimpleUploadedFile
 User = django.contrib.auth.get_user_model()
-import datetime
 
 PERSONAL_PROFILES = [
     [
