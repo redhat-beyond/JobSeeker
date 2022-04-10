@@ -27,7 +27,9 @@ def post_with_preferences(db, users):
         author=users[0],
         is_job_offer=True,
         prefernces=preferences0)
-
+    
+    preferences0.save()
+    post.save()
     return [post, preferences0]
 
 
@@ -38,10 +40,12 @@ class TestPostPreferencesRelation:
     def test_prefernces_removal_to_post(self, users, post_with_preferences):
         # Testing that a preference removal doesn't removes the post
         # In this case post_with_preferences[1] is the preference of post post_with_preferences[0]
-        preference = post_with_preferences[1]
-        post = post_with_preferences[0]
-        preference.save()
-        post.save()
+        preference = Preference.objects.filter(
+            job_type=JobType.objects.first(),
+            location=Location.objects.first(),
+            years_of_experience=YearsOfExperience.objects.first()
+            ).first()
+        post = Post.posts.filter(content=POST_CONTENT).first()
         assert post in Post.posts.main_feed()
         assert preference in Preference.objects.all()
         preference.delete()
