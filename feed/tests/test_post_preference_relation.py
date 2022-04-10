@@ -27,7 +27,7 @@ def post_with_preferences(db, users):
         author=users[0],
         is_job_offer=True,
         prefernces=preferences0)
-    
+
     preferences0.save()
     post.save()
     return [post, preferences0]
@@ -43,8 +43,7 @@ class TestPostPreferencesRelation:
         preference = Preference.objects.filter(
             job_type=JobType.objects.first(),
             location=Location.objects.first(),
-            years_of_experience=YearsOfExperience.objects.first()
-            ).first()
+            years_of_experience=YearsOfExperience.objects.first()).first()
         post = Post.posts.filter(content=POST_CONTENT).first()
         assert post in Post.posts.main_feed()
         assert preference in Preference.objects.all()

@@ -1,5 +1,5 @@
 import pytest
-from feed.models import Post, Comment, comment
+from feed.models import Post, Comment
 import django.contrib.auth
 
 

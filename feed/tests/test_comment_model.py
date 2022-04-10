@@ -42,7 +42,6 @@ class TestCommentModel:
     def test_new_comment_properties(self, comments, users, post0):
         # Testing comment data
         comment0 = Comment.comments.filter(content=COMMENT1_CONTENT).first()
-        comment1 = Comment.comments.filter(content=COMMENT2_CONTENT).first()
         assert comment0.author == comments[0].author
         assert comment0.post_parent == comments[0].post_parent
         assert comment0.content == comments[0].content
