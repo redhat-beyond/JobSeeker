@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 # from django.utils.translation import ugettext_lazy as _
+from app.settings import MEDIA_ROOT
 
 
 class ProfileManager(models.Manager):
@@ -19,8 +20,11 @@ class PersonalProfile(models.Model):
     profile_pic = models.ImageField(null=True, blank=True, upload_to='profile_pics')
     resume = models.FileField(null=True, upload_to='resumes')
 
+<<<<<<< HEAD
 
 '''
+=======
+>>>>>>> 1f86579 (merge conflict)
     def delete(self):
 
         # Get the media root path, and remove the first `/vagrant` folder.
