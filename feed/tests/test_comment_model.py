@@ -10,13 +10,13 @@ POST_CONTENT = "Some first post content here"
 
 
 def generate_random_username():
-    letters = [chr(l + ord('a')) for l in range(0,27)]
-    return ( 'user_' + ''.join(random.choice(letters) for i in range(7)))
+    letters = [chr(letter + ord('a')) for letter in range(0, 27)]
+    return ('user_' + ''.join(random.choice(letters) for i in range(7)))
 
 
 def generate_random_password():
-    signs = [chr(i) for i in range(33,123)]
-    return ( ''.join(random.choice(signs) for i in range(10)))
+    signs = [chr(i) for i in range(33, 123)]
+    return (''.join(random.choice(signs) for i in range(10)))
 
 
 @pytest.fixture
