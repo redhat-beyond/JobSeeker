@@ -1,11 +1,21 @@
 import pytest
+<<<<<<< HEAD
 import datetime
 from django.contrib.auth.models import User
+=======
+import django.contrib.auth
+import datetime, os.path
+>>>>>>> 3fa2475 (updating tests.py)
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
+<<<<<<< HEAD
 GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
+=======
+GENERAL_IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
+GENERAL_RESUME_PATH = 'personal_profile/static/personal_profile/images/resumes/test_resume.txt'
+>>>>>>> 3fa2475 (updating tests.py)
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 
 
