@@ -8,7 +8,7 @@ import django.db.models.manager
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('job_board', '0004_test_data_years_of_experiences'),
+        ('job_board', '0004_preference_work_schedule_and_more'),
         ('feed', '0006_post_likes'),
     ]
 
