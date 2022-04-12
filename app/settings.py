@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'job_board.apps.JobBoardConfig',
     'feed.apps.FeedConfig',
     'personal_profile.apps.PersonalProfileConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,5 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'personal_profile/static/personal_profile/images')
 
 LOGIN_REDIRECT_URL = '/about/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
