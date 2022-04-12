@@ -1,3 +1,5 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 
-# Create your views here.
+
+def job_board(request):
+    return render(request, 'job_board/job_board.html')
