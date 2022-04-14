@@ -59,7 +59,8 @@ class TestProfileUserRelation:
     # Testing personal profile model and user relation
 
     def test_profile_is_deleted_when_user_is_deleted(self, user_1):
-        test_user = (PersonalProfile.objects.filter(user=user_1).first()).user
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
+        test_profile.save()
+        test_user = test_profile.user
         test_user.delete()
         assert test_profile not in PersonalProfile.objects.all()
