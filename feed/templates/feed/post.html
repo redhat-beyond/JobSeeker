@@ -1,0 +1,86 @@
+{% load static %}
+<div class="mb-5 container d-flex justify-content-center">
+    <div class="card" style="min-width: 65%;">
+        <div class="card-body pb-1">
+            <div class="d-flex pb-2">
+                <a href="">
+                    <img src="{{ post.author.personalprofile.profile_pic.url }}"
+                    class="border rounded-circle me-2" style="height: 50px; width: 50px;" />
+                </a>
+                <div>
+                    <a href="" class="text-dark">
+                        <strong>{{ post.author }}</strong>
+                    </a>
+                    <p class="text-muted d-block" style="margin-top: -6px;">
+                        <small>{{ post.date_posted }}</small>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <h5>{{post.title}}</h3>
+                <p>
+                    {{ post.content }}
+                </p>
+                {% if post.is_job_offer %}
+                    <p>
+                        <b>Job Type:</b> {{ post.prefernces.job_type.text }} <br>
+                        <b>Experience Level:</b> {{ post.prefernces.years_of_experience.text }} <br>
+                        <b>Location:</b> {{ post.prefernces.location.name }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card-body">
+            
+            <!-- Reactions -->
+            <div class="d-flex justify-content-between mb-3">
+                <div class="ms-2">
+                    <a class="btn disabled">
+                        <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" />
+                        <span>{{post.likes.all.count}}</span>
+                    </a>
+                </div>
+                <div class="me-2">
+                    <a class="text-muted btn disabled"> {{post.comments.all.count}} comments </a>
+                </div>
+            </div>                
+    
+            <!-- Buttons -->
+            <div class="d-flex justify-content-around text-center border-top border-bottom mb-4">
+                <button type="button" class="btn btn-link btn-lg">
+                    <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
+                </button>
+                <button type="button" class="btn btn-link btn-lg">
+                    <img src="{% static 'jobseeker/icons/comment.svg' %}" class="me-2" /> Comment
+                </button>
+                {% if post.is_job_offer %}
+                    <button type="button" class="btn btn-lg" id="applybutton">
+                        Apply
+                    </button>
+                {% endif %}
+            </div>
+            
+            {% for comment in post.comments.all %}
+            <!-- Answers -->
+            <div class="d-flex mb-3">
+                <a href="">
+                    <img src="{{ comment.author.personalprofile.profile_pic.url }}"
+                    class="border rounded-circle me-2" style="height: 40px; width: 40px;" />
+                </a>
+                <div>
+                    <div class="bg-light rounded-3 px-3 py-1">
+                        <a href="" class="text-dark mb-0">
+                            <strong>{{comment.author}}</strong>
+                        </a>
+                        <p class="text-muted d-block mb-0">
+                            <small>{{comment.content}}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
