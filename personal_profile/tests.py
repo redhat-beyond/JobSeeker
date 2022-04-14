@@ -60,6 +60,6 @@ class TestProfileUserRelation:
 
     def test_profile_is_deleted_when_user_is_deleted(self, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
-        test_user = User.objects.all(username='user_1')
+        test_user = User.objects.filter(username='user_1').first()
         test_user.delete()
         assert test_profile not in PersonalProfile.objects.all()
