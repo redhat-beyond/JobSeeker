@@ -47,9 +47,8 @@ class TestProfileModel:
         assert test_profile.profile_pic == profile_1.profile_pic
         assert test_profile.resume == profile_1.resume
 
-    def test_profile_is_deleted(self, profile_1, user_1):
+    def test_profile_is_deleted(self, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
-        # profile_1.save()
         assert test_profile in PersonalProfile.objects.all()
         test_profile.delete()
         assert test_profile not in PersonalProfile.objects.all()
@@ -59,7 +58,8 @@ class TestProfileModel:
 class TestProfileUserRelation:
     # Testing personal profile model and user relation
 
-    def test_profile_is_deleted_when_user_is_deleted(self, profile_1, user_1):
-        profile_1.save()
-        user_1.delete()
-        assert profile_1 not in PersonalProfile.objects.all()
+    def test_profile_is_deleted_when_user_is_deleted(self, user_1):
+        test_user = (PersonalProfile.objects.filter(user=user_1).first()).user
+        test_profile = PersonalProfile.objects.filter(user=user_1).first()
+        test_user.delete()
+        assert test_profile not in PersonalProfile.objects.all()
