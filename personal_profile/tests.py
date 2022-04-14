@@ -1,6 +1,7 @@
 import pytest
 import django.contrib.auth
 import datetime
+from django.contrib.auth.models import User
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
