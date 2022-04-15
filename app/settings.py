@@ -138,3 +138,5 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'personal_profile/static/personal_profile/images')
 
 LOGIN_REDIRECT_URL = '/about/'
+
+LOGOUT_REDIRECT_URL = '/about/'
