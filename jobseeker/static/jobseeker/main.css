@@ -14,3 +14,8 @@ footer {
     width: 100%;
     background-color: white;
 }
+
+#applybutton {
+    background-color: #77B08D;
+    color:white;
+}

@@ -11,8 +11,8 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     is_job_offer = models.BooleanField(default=False)
-    likes = models.ManyToManyField(User, related_name="likes")
-    prefernces = models.ForeignKey(Preference, on_delete=models.SET_NULL, null=True)
+    likes = models.ManyToManyField(User, related_name="likes", blank=True)
+    prefernces = models.ForeignKey(Preference, on_delete=models.SET_NULL, null=True, blank=True)
     posts = PostManager()
 
     def __str__(self):
