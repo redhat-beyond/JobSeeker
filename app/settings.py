@@ -139,4 +139,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'personal_profile/static/personal_profile/im
 
 LOGIN_REDIRECT_URL = '/about/'
 
-LOGOUT_REDIRECT_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/'
+
