@@ -2,6 +2,7 @@ import pytest
 from feed.models import Post
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
 
 
 USERNAME1 = 'username1'
@@ -13,12 +14,18 @@ LOGIN_URL = '/login/'
 POST_DETAIL_URL = '/post/'
 FEED_URL = '/'
 NEW_POST_URL = '/post/new/'
+LOGIN_URL = '/login/'
+LIKE_WARNING_MESSAGE = 'You must login in order to like a post'
 REDIRECT_URL_STATUS = 302
 PAGE_NOT_FOUND = 404
 
 
 def post_delete_url(post_id):
     return f"/post/{post_id}/delete/"
+
+
+def post_like_url(post_id):
+    return f"/post/{post_id}/like/"
 
 
 @pytest.fixture
@@ -29,10 +36,32 @@ def users(db):
 
 
 @pytest.fixture
+def logged_in_client(client, users):
+    client.force_login(users[0])
+    return client
+
+
+@pytest.fixture
 def post(db, users):
     post = Post.posts.create(title=POST_TITLE, content=POST_CONTENT, author=users[0])
     post.save()
     return post
+
+
+@pytest.fixture
+def liked_post(post, users):
+    post.likes.add(users[0])
+    return post
+
+
+@pytest.fixture
+def post_init_like_count(post):
+    return post.likes.count()
+
+
+@pytest.fixture
+def liked_post_init_like_count(liked_post):
+    return liked_post.likes.count()
 
 
 @pytest.mark.django_db
@@ -131,3 +160,60 @@ class TestPostCreateView:
         # The new post ID should be as the amount of posts exists
         new_post_id = Post.posts.count()
         assert response.url == POST_DETAIL_URL + str(new_post_id) + '/'
+
+
+class TestLikeForNonLoggedUser:
+    def test_like_view_return_warning_when_logged_out(self, post, client):
+        # Testing that when logged out, if trying to access the like url
+        # a warning message returns
+        post_to_like = post
+        response = client.get(post_like_url(post_to_like.id))
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        assert len(messages) == 1
+        assert messages[0] == LIKE_WARNING_MESSAGE
+
+    def test_like_view_redirects_to_login_when_logged_out(self, post, client):
+        # Testing that when logged out, if trying to access the like url
+        # the user gets redirected to the login url
+        post_to_like = post
+        response = client.get(post_like_url(post_to_like.id))
+        assert response.status_code == REDIRECT_URL_STATUS
+        assert response.url == LOGIN_URL
+
+    def test_like_url_doesnt_adds_like_to_post(self, post, client, post_init_like_count):
+        # Testing that when logged out, if trying to access the like url
+        # it doesnt adds a like to a post
+        post_to_check_likes = post
+        client.get(post_like_url(post_to_check_likes.id))
+        assert post_to_check_likes.likes.count() == post_init_like_count
+
+
+class TestLikeForLoggedUser:
+    def test_like_url_adds_like_to_post(self, post, logged_in_client, post_init_like_count):
+        # Testing that the like url, adds a like to a specific post
+        post_to_like = post
+        response = logged_in_client.get(post_like_url(post_to_like.id))
+        response = logged_in_client.get(response.url)
+        assert response.context['post'].id == post_to_like.id
+        assert response.context['post'].likes.count() == post_init_like_count + 1
+
+    def test_like_url_unlikes(self, liked_post, logged_in_client, liked_post_init_like_count):
+        # Testing that the like url, unlike a post where the logged in
+        # user have already liked the post
+        post_to_unlike = liked_post
+        response = logged_in_client.get(post_like_url(post_to_unlike.id))
+        response = logged_in_client.get(response.url)
+        assert response.status_code == 200
+        assert response.context['post'].id == post_to_unlike.id
+        assert response.context['post'].likes.count() == liked_post_init_like_count - 1
+
+    def test_after_like_redirect_to_detail_view(self, post, logged_in_client):
+        # Testing that after successful like, if the user got to the like URL
+        # by typing it, he would get redirected to the post detail view page.
+        # Also, if a user turned off the HTTP_REFERER option in his browser he would
+        # get returned to the post detail view
+        response = logged_in_client.get(post_like_url(post.id))
+        assert response.status_code == REDIRECT_URL_STATUS
+        assert response.url == POST_DETAIL_URL + f'{post.id}/'
+        response = logged_in_client.get(response.url)
+        assert response.status_code == 200
