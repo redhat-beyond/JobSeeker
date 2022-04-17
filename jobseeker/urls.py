@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('login.urls')),
     path('', include('personal_profile.urls')),
     path('', include('chat.urls')),
+    path('', include('job_board.urls')),
 ]

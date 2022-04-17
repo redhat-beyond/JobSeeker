@@ -51,3 +51,9 @@ class TestJobBoardModels:
 
         preference.delete()
         assert preference not in Preference.objects.all()
+
+
+class TestJobBoardURLs:
+    def test_job_board_app_entrypoint(self, client):
+        response = client.get("/job_board/")
+        assert response.status_code == 200
