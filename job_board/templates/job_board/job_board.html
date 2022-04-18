@@ -2,8 +2,12 @@
 {% block content %}
     <div class="search_bar">
         <h2>Job Board</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="search">
+        </form>
     </div>
     <div class="search_results">
-        <h2></h2>
     </div>
 {% endblock content %}

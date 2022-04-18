@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('job_board/', views.job_board, name='job_board'),
+    path('job_board/', views.AddSearchView.as_view(), name='job_board'),
 ]
