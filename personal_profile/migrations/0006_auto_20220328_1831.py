@@ -40,7 +40,6 @@ PERSONAL_PROFILES = [
     ]
 ]
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
