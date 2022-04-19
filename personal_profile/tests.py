@@ -5,8 +5,7 @@ from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-GENERAL_IMAGE_PATH = 'personal_profile/static/personal_profile/images'
-GENERAL_RESUME_PATH = 'personal_profile/static/personal_profile/images/resumes'
+GENERAL_IMAGE_PATH = '/vagrant/personal_profile/static/personal_profile/images/'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 
 
@@ -26,7 +25,7 @@ def user_1(db):
 def profile_1(db, user_1):
     profile_1 = PersonalProfile(company='Test Company', user=user_1, about='Test About',
                                 birth_date=datetime.date(1995, 12, 10),
-                                profile_pic=SimpleUploadedFile(name='test_image.jpg',
+                                profile_pic=SimpleUploadedFile(name='test_image_1.jpg',
                                                                content=open(IMAGE_PATH, 'rb').read(),
                                                                content_type='image/jpeg'),
                                 resume=SimpleUploadedFile('test_resume.txt',
@@ -56,8 +55,8 @@ class TestProfileModel:
 
     def test_check_placement_of_files(self, profile_1, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
-        assert test_profile.profile_pic.name in GENERAL_IMAGE_PATH
-        assert test_profile.resume.name in GENERAL_RESUME_PATH
+        assert test_profile.profile_pic.path in GENERAL_IMAGE_PATH + test_profile.profile_pic.name
+        assert test_profile.resume.path in GENERAL_IMAGE_PATH + test_profile.resume.name
 
 
 @pytest.mark.django_db
