@@ -3,8 +3,6 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-# from django.utils.translation import ugettext_lazy as _
-from app.settings import MEDIA_ROOT
 
 
 class ProfileManager(models.Manager):

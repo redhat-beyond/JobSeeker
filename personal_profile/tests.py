@@ -17,7 +17,9 @@ def test_profile_app_entrypoint(client):
 
 @pytest.fixture()
 def user_1(db):
-    return User.objects.create_user('user_1', password='userpassword')
+    user_1 = User.objects.create_user('user_1', password='userpassword')
+    user_1.save()
+    return user_1
 
 
 @pytest.fixture()
@@ -29,6 +31,7 @@ def profile_1(db, user_1):
                                                                content_type='image/jpeg'),
                                 resume=SimpleUploadedFile('test_resume.txt',
                                                           b'these are the contents of the txt file'))
+    profile_1.save()
     return profile_1
 
 
