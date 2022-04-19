@@ -1,5 +1,4 @@
 import pytest
-import django.contrib.auth
 import datetime
 from django.contrib.auth.models import User
 from .models import PersonalProfile
@@ -7,7 +6,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
-User = django.contrib.auth.get_user_model()
 
 
 def test_profile_app_entrypoint(client):
@@ -48,7 +46,7 @@ class TestProfileModel:
         assert test_profile.profile_pic == profile_1.profile_pic
         assert test_profile.resume == profile_1.resume
 
-    def test_profile_is_deleted(self, user_1):
+    def test_profile_is_deleted(self, profile_1, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
         assert test_profile in PersonalProfile.objects.all()
         test_profile.delete()
@@ -59,8 +57,8 @@ class TestProfileModel:
 class TestProfileUserRelation:
     # Testing personal profile model and user relation
 
-    def test_profile_is_deleted_when_user_is_deleted(self, user_1):
+    def test_profile_is_deleted_when_user_is_deleted(self, profile_1, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
-        test_user = User.objects.filter(password='userpassword').first()
+        test_user = User.objects.filter(username='user_1').first()
         test_user.delete()
         assert test_profile not in PersonalProfile.objects.all()
