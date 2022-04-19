@@ -46,6 +46,7 @@ class Migration(migrations.Migration):
         ('personal_profile', '0005_personalprofile_resume'),
     ]
 
+
     def generate_personal_profiles(apps, schema_editor):
         with transaction.atomic():
             for profile in PERSONAL_PROFILES:
