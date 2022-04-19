@@ -56,8 +56,8 @@ class TestProfileModel:
 
     def test_check_placement_of_files(self, profile_1, user_1):
         test_profile = PersonalProfile.objects.filter(user=user_1).first()
-        assert test_profile.profile_pic in GENERAL_IMAGE_PATH
-        assert test_profile.resume in GENERAL_RESUME_PATH
+        assert test_profile.profile_pic.name in GENERAL_IMAGE_PATH
+        assert test_profile.resume.name in GENERAL_RESUME_PATH
 
 
 @pytest.mark.django_db
