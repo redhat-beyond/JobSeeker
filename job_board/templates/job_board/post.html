@@ -1,0 +1,22 @@
+{% load static %}
+<div class="mb-5 container d-flex justify-content-center" 
+    style="margin-top: revert !important; margin-bottom: revert !important; padding-left: 0%; padding-right: 0%;">
+    <div class="card" style="min-width: 100%;">
+        <div class="card-body pb-1">
+            <div class="d-flex pb-2">
+                <div>
+                    <a href="" class="text-dark">
+                        <strong>{{ post.author }}</strong>
+                    </a>
+                    <p class="text-muted d-block" style="margin-top: 0 !important; margin-bottom: 0 !important;">
+                        <small>{{ post.date_posted }}</small>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <h5>{{post.title}}</h3>
+            </div>
+        </div>
+    </div>
+</div>

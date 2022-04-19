@@ -9,5 +9,10 @@
         </form>
     </div>
     <div class="search_results">
+        {% if results%}
+            {% for post in results %}
+                {% include "job_board/post.html" %}
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock content %}
