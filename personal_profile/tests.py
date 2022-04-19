@@ -5,7 +5,7 @@ from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-GENERAL_IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics'
+GENERAL_IMAGE_PATH = 'personal_profile/static/personal_profile/images'
 GENERAL_RESUME_PATH = 'personal_profile/static/personal_profile/images/resumes'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 
