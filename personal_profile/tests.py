@@ -5,6 +5,8 @@ from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
+GENERAL_IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics'
+GENERAL_RESUME_PATH = 'personal_profile/static/personal_profile/images/resumes'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 User = django.contrib.auth.get_user_model()
 
@@ -48,6 +50,14 @@ class TestProfileModel:
         assert profile_1 in PersonalProfile.objects.all()
         profile_1.delete()
         assert profile_1 not in PersonalProfile.objects.all()
+
+    def check_name_of_files(self, profile_1, user_1):
+        assert profile_1.profile_pic == 'image_user_1.jpg'
+        assert profile_1.resume == 'resume_user_1.jpg'
+
+    def check_placement_of_files(self, profile_1, user_1):
+        assert profile_1.profile_pic in GENERAL_IMAGE_PATH
+        assert profile_1.resume in GENERAL_RESUME_PATH
 
 
 @pytest.mark.django_db
