@@ -1,6 +1,6 @@
 import pytest
 from feed.models import Post
-from job_board.models.preference import Preference, JobType, Location, YearsOfExperience
+from job_board.models.preference import Preference, JobType, Location
 import django.contrib.auth
 import random
 
@@ -30,8 +30,7 @@ def users(db):
 def post_with_preferences(db, users):
     preferences0 = Preference.objects.create(
         job_type=JobType.objects.first(),
-        location=Location.objects.first(),
-        years_of_experience=YearsOfExperience.objects.first())
+        location=Location.objects.first())
     post = Post.posts.create(
         title=POST_TITLE,
         content=POST_CONTENT,
