@@ -7,7 +7,7 @@ def personal_profile(request):
         context = {
         'title': 'Personal Profile'
         }
-        return render(request, 'personal_profile.html', context)
+        return render(request, 'personal_profile_detail.html', context)
 
 
 class ProfileDetailView(DetailView):
