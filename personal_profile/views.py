@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
+from .models import PersonalProfile
 
 
-def personal_profile(request):
-    return render(request, 'personal_profile.html')
+class ProfileDetailView(DetailView):
+    model = PersonalProfile

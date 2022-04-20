@@ -1,0 +1,18 @@
+{% extends "jobseeker/base_template.html" %}
+{% block content %}
+<h1>Personal Profile</h1>
+<div class="pt-5">
+    <div class="d-flex pb-2">
+        <a href="">
+            <img src="{{ personalprofile.profile_pic.url }}" 
+            class="border rounded-circle me-2" style="height: 85px; width: 85px;" />
+        </a>
+    <div>
+    <b>Name:</b> {{ personalprofile.user.username }} <br>
+    <b>Company:</b> {{ personalprofile.company }} <br>
+    <b>About:</b> {{ personalprofile.about }} <br>
+    <div class="d-flex pb-2">
+        <a href="{{ personalprofile.resume.url }}">Resume</a>
+    <div>
+</div>
+{% endblock content %}
