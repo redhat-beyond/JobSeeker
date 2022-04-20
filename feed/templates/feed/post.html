@@ -65,9 +65,12 @@
                 <button type="button" class="btn btn-link btn-lg">
                     <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
                 </button>
-                <button type="button" class="btn btn-link btn-lg">
-                    <img src="{% static 'jobseeker/icons/comment.svg' %}" class="me-2" /> Comment
-                </button>
+                <form action="{% url 'comment-create' post.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link btn-lg">
+                        <img src="{% static 'jobseeker/icons/comment.svg' %}" class="me-2" /> Comment
+                    </button>
+                </form>
                 {% if post.is_job_offer %}
                     <button type="button" class="btn btn-lg" id="applybutton">
                         Apply
