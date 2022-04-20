@@ -19,3 +19,16 @@ footer {
     background-color: #77B08D;
     color:white;
 }
+
+.search_bar {
+    display: inline;
+    float: left;
+    background-color: #7DA3A1;
+    width: 40%;
+}
+
+.search_results {
+  display: inline;
+  float: left;
+  width: 60%;
+}
