@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .post import Post
+from django.urls import reverse
 
 
 class Comment(models.Model):
@@ -11,3 +12,6 @@ class Comment(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     content = models.TextField()
     comments = models.Manager()
+
+    def get_absolute_url(self):
+        return reverse('post-detail', args=(self.post_parent.id,))
