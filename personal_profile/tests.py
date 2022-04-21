@@ -7,11 +7,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
-
-
-def test_profile_app_entrypoint(client):
-    response = client.get("/profile/")
-    assert response.status_code == 200
+PROFILE_DETAIL_URL = '/profile/'
 
 
 @pytest.fixture()
@@ -32,6 +28,13 @@ def profile_1(db, user_1):
                                                           b'these are the contents of the txt file'))
     profile_1.save()
     return profile_1
+
+'''
+class TestProfiledURLs:
+    def test_profile_app_entrypoint(self, client):
+        response = client.get("/profile/")
+        assert response.status_code == 200
+'''
 
 
 @pytest.mark.django_db
@@ -68,3 +71,11 @@ class TestProfileUserRelation:
         test_user = User.objects.filter(username='user_1').first()
         test_user.delete()
         assert test_profile not in PersonalProfile.objects.all()
+
+
+@pytest.mark.django_db
+class TestProfileDetailView:
+    def test_detail_view_page_entrypoint(self, profile_1, user_1, client):
+        # Testing to see if a valid user id gets a valid detail view page
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assert response.status_code == 200
