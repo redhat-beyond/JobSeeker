@@ -29,13 +29,6 @@ def profile_1(db, user_1):
     profile_1.save()
     return profile_1
 
-'''
-class TestProfiledURLs:
-    def test_profile_app_entrypoint(self, client):
-        response = client.get("/profile/")
-        assert response.status_code == 200
-'''
-
 
 @pytest.mark.django_db
 class TestProfileModel:

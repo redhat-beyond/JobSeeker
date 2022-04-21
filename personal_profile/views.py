@@ -4,10 +4,8 @@ from .models import PersonalProfile
 
 
 def personal_profile(request):
-        context = {
-        'title': 'Personal Profile'
-        }
-        return render(request, 'personalprofile_detail.html', context)
+    context = {'title': 'Personal Profile'}
+    return render(request, 'personalprofile_detail.html', context)
 
 
 class ProfileDetailView(DetailView):
