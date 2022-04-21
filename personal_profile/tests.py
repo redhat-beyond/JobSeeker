@@ -72,3 +72,9 @@ class TestProfileDetailView:
         # Testing to see if a valid user id gets a valid detail view page
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assert response.status_code == 200
+
+    def test_detail_view_returned_data(self, profile_1, user_1, client):
+        # Testing that the returned profile really is the one
+        # that its ID has passed through the URL
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assert response.context['personalprofile'].id == profile_1.id
