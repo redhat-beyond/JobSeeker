@@ -1,25 +1,18 @@
 {% extends "jobseeker/base_template.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="Login">
-</form>
-
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
+    <div class="container d-flex justify-content-center mt-5 py-5 px-1">
+        <form class="border p-5" method="post" action="{% url 'login' %}" style="min-width: 65%; background-color: white;">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group mt-4">
+                <input class="btn btn-light" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
 {% endblock content %}
