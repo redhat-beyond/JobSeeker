@@ -5,6 +5,7 @@ from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
+GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 
 
@@ -51,6 +52,11 @@ class TestProfileModel:
         assert test_profile in PersonalProfile.objects.all()
         test_profile.delete()
         assert test_profile not in PersonalProfile.objects.all()
+
+    def test_check_placement_of_files(self, profile_1, user_1):
+        test_profile = PersonalProfile.objects.filter(user=user_1).first()
+        assert test_profile.profile_pic.path in GENERAL_IMAGE_PATH + test_profile.profile_pic.name
+        assert test_profile.resume.path in GENERAL_IMAGE_PATH + test_profile.resume.name
 
 
 @pytest.mark.django_db
