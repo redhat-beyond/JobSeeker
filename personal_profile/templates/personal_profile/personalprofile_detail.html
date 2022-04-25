@@ -1,18 +1,37 @@
 {% extends "jobseeker/base_template.html" %}
 {% block content %}
-<h1>Personal Profile</h1>
-<div class="pt-5">
-    <div class="d-flex pb-2">
-        <a href="">
-            <img src="{{ personalprofile.profile_pic.url }}" 
-            class="border rounded-circle me-2" style="height: 85px; width: 85px;" />
-        </a>
-    <div>
-    <b>Name:</b> {{ personalprofile.user.username }} <br>
-    <b>Company:</b> {{ personalprofile.company }} <br>
-    <b>About:</b> {{ personalprofile.about }} <br>
-    <div class="d-flex pb-2">
-        <a href="{{ personalprofile.resume.url }}">Resume</a>
-    <div>
-</div>
+<section class="section about-section gray-bg" id="personalprofile">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+                <div class="about-text go-to">
+                    <h3 class="dark-color">About Me</h3>
+                    <h6 class="theme-color lead"><b>Name: </b>{{ personalprofile.user.username }}<br></h6>
+                    <p>{{ personalprofile.about }}</p>
+                    <div class="row about-list">
+                        <div class="col-md-6">
+                            <div class="media">
+                                <h6 class="theme-color lead"><b>Company: </b>{{ personalprofile.company }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-avatar">
+                      <img src="{{ personalprofile.profile_pic.url }}" title="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <p class="m-0px font-w-600">  <a href="{{ personalprofile.resume.url }}">Resume</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
