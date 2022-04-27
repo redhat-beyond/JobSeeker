@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-from django.views.generic import DetailView, DeleteView
+from django.views.generic import DetailView, DeleteView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse
@@ -30,3 +30,15 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, "Post deleted successfully")
         return reverse('feed')
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content']
+    login_url = '/login/'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.author = self.request.user
+        post.save()
+        return super().form_valid(form)

@@ -1,7 +1,7 @@
 import pytest
 from feed.models import Post
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 
 USERNAME1 = 'username1'
@@ -9,7 +9,11 @@ USERNAME2 = 'username2'
 USER_PASS = 'secret_pass'
 POST_TITLE = 'post title'
 POST_CONTENT = 'some post content'
+LOGIN_URL = '/login/'
 POST_DETAIL_URL = '/post/'
+FEED_URL = '/'
+NEW_POST_URL = '/post/new/'
+REDIRECT_URL_STATUS = 302
 PAGE_NOT_FOUND = 404
 
 
@@ -91,3 +95,39 @@ class TestPostDeleteView:
         else:
             # The user login detail are wrong
             assert False
+
+
+@pytest.mark.django_db
+class TestPostCreateView:
+    def test_create_new_post_view_entrypoin_auth(self, client, users):
+        # Testing that for a logged in user, the new post url gets a valid response
+        client.force_login(users[0])
+        response = client.get(NEW_POST_URL)
+        assert response.status_code == 200
+
+    def test_create_new_post_view_entrypoint_unauth(self, client):
+        # Testing that for logged out users, the create new post url
+        # redirects to the login page
+        response = client.get(NEW_POST_URL)
+        assert response.status_code == REDIRECT_URL_STATUS
+        assert response.url == LOGIN_URL + '?next=' + NEW_POST_URL
+
+    def test_post_creation_using_form(self, users, client):
+        # Testing that a post creates successfully using the create new
+        # post form
+        form_data = {'title': 'some title', 'content': 'some content...', }
+        assert not Post.posts.filter(title=form_data['title'], content=form_data['content']).exists()
+        client.force_login(users[0])
+        client.post(NEW_POST_URL, form_data)
+        assert Post.posts.filter(title=form_data['title'], content=form_data['content']).exists()
+
+    def test_redirect_after_successful_post_creation(self, users, client):
+        # Testing that after a successful post creation, the user gets
+        # redirectd to the new post detail view page
+        form_data = {'title': 'some title', 'content': 'some content...', }
+        client.force_login(users[0])
+        response = client.post(NEW_POST_URL, form_data)
+        assert response.status_code == REDIRECT_URL_STATUS
+        # The new post ID should be as the amount of posts exists
+        new_post_id = Post.posts.count()
+        assert response.url == POST_DETAIL_URL + str(new_post_id) + '/'
