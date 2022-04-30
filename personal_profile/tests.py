@@ -78,3 +78,12 @@ class TestProfileDetailView:
         # that its ID has passed through the URL
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assert response.context['personalprofile'].id == profile_1.id
+
+    def test_detail_view_page_for_invalid_profile_id(self, client):
+        # Testing to see if for an invalid profile id, the response will be 404
+        # The id's start from 1 and increases by 1 for each profile, so the last profile will
+        # get the id of the number of profiles, so by adding 1 we promise that it will be
+        # an invalid ID
+        max_profile_id = PersonalProfile.objects.all().count()
+        response = client.get(PROFILE_DETAIL_URL + str(max_profile_id + 1) + '/')
+        assert response.status_code == 404
