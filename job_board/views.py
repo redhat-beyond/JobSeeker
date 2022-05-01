@@ -24,5 +24,7 @@ class AddSearchView(FormView):
         form = self.form_class(request.POST)
         if form.is_valid():
             context = {'title': 'Job Board', 'results': Post.posts.filter(is_job_offer=True), 'form': form}
+        else:
+            context = {'title': 'Job Board', 'form': form}
 
         return render(request, 'job_board/job_board.html', context)
