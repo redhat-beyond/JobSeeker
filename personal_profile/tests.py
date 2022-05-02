@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth.models import User
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
+from pytest_django.asserts import assertTemplateUsed
 
 
 GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
@@ -75,7 +76,6 @@ class TestProfileDetailView:
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assert response.status_code == 200
         assert response.context['user'] == test_user
-        assert 'personalprofile_detail.html' in (t.name for t in response.templates)
 
     def test_detail_view_returned_data(self, profile_1, user_1, client):
         # Testing that the returned profile really is the one
@@ -93,3 +93,11 @@ class TestProfileDetailView:
         max_profile_id = PersonalProfile.objects.all().count()
         response = client.get(PROFILE_DETAIL_URL + str(max_profile_id + 1) + '/')
         assert response.status_code == 404
+
+    def test_detail_view_template(self, profile_1, user_1, client):
+        # Testing to see if a valid user gets a valid detail view from response
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assertTemplateUsed(response, 'personal_profile/personalprofile_detail.html')
+
