@@ -100,4 +100,3 @@ class TestProfileDetailView:
         client.force_login(test_user)
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assertTemplateUsed(response, 'personal_profile/personalprofile_detail.html')
-
