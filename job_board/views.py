@@ -27,4 +27,4 @@ class AddSearchView(FormView):
         else:
             context = {'title': 'Job Board', 'form': form}
 
-        return render(request, 'job_board/job_board.html', context)
+        return render(request, self.template_name, context)
