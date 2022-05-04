@@ -1,10 +1,19 @@
 {% extends "jobseeker/base_template.html" %}
+{% load static %}
 {% block content %}
 
     <div class="pt-5">
         {% for post in posts %}
             {% include "feed/post.html" %}
         {% endfor %}
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 mb-5 me-5">
+        <form action="{% url 'post-create' %}">
+            <button type="submit" class="btn btn-circle border rounded-circle p-3" style="background-color: white;">
+                <img style="height: 35px; width: 35px;" src="{% static 'jobseeker/icons/pencil.svg' %}">
+            </button>
+        </form>
     </div>
 
 {% endblock content %}
