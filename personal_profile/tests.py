@@ -29,6 +29,7 @@ def profile_1(db, user_1):
     profile_1.save()
     return profile_1
 
+
 @pytest.fixture()
 def max_profile_id(db):
     return PersonalProfile.objects.all().count()
