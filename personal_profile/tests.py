@@ -36,7 +36,6 @@ def max_profile_id(db):
     return PersonalProfile.objects.all().count()
 
 
-
 @pytest.mark.django_db
 class TestProfileModel:
     # Testing different Personal Profile saving and deletion
