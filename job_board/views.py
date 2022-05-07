@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 from .search_form import SearchForm
-from feed.models.post import Post
+from .search_engine import SearchEngine
 
 
 class AddSearchView(FormView):
@@ -23,7 +23,8 @@ class AddSearchView(FormView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            context = {'title': 'Job Board', 'results': Post.posts.filter(is_job_offer=True), 'form': form}
+            posts = SearchEngine.search(self, form.save(commit=False))
+            context = {'title': 'Job Board', 'results': posts, 'form': form}
         else:
             context = {'title': 'Job Board', 'form': form}
 
