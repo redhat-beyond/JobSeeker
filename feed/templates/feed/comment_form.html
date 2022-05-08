@@ -1,0 +1,16 @@
+{% extends "jobseeker/base_template.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container d-flex justify-content-center mt-5 py-5 px-1">
+        <form class="border p-5" method="POST" style="min-width: 65%; background-color: white;">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"><b>New Comment</b></legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <input class="btn btn-light mt-4 border" type="submit" value="Comment">
+            </div>
+        </form>
+    </div>
+{% endblock content %}
