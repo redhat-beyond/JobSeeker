@@ -10,7 +10,7 @@ def create_valid_form_data():
     form1 = {
         'job_type': '1',
         'location': '3',
-        'years_of_experience': 'no experience',
+        'years_of_experience': 'No experience',
         'work_schedule': 'Flexible'
     }
 
