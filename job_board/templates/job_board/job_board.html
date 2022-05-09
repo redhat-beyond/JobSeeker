@@ -1,18 +1,26 @@
 {% extends "jobseeker/base_template.html" %}
 {% block content %}
-    <div class="search_bar">
-        <h2>Job Board</h2>
-        <form method="post">
+{% load crispy_forms_tags %}
+<div class="row mt-5">
+    <div class="col-1"></div>
+    <div class="col-3">
+        <form class="border p-3 position-fixed ms-3" style="background-color: white; min-width: 20%;" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="search">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3"><b>Job Board</b></legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group mt-4">
+                <input class="btn border btn-light" type="submit" value="Search">
+            </div>
         </form>
     </div>
-    <div class="search_results">
+    <div class="col-7">
         {% if results%}
             {% for post in results %}
-                {% include "job_board/post.html" %}
+                {% include "feed/post.html" %}
             {% endfor %}
         {% endif %}
     </div>
+</div>
 {% endblock content %}
