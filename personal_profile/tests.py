@@ -75,11 +75,9 @@ class TestProfileUserRelation:
 class TestProfileDetailView:
     def test_detail_view_page_entrypoint(self, profile_1, user_1, client):
         # Testing to see if a valid user gets a valid detail view page
-        test_user = User.objects.filter(username='user_1').first()
-        client.force_login(test_user)
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assert response.status_code == 200
-        assert response.context['user'] == test_user
+        assert response.context['personalprofile'] == user_1.personalprofile
 
     def test_detail_view_returned_data(self, profile_1, user_1, client):
         # Testing that the returned profile really is the one
