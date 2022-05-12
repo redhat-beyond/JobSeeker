@@ -3,15 +3,12 @@ import datetime
 from django.contrib.auth.models import User
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
+from pytest_django.asserts import assertTemplateUsed
 
 
 GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
-
-
-def test_profile_app_entrypoint(client):
-    response = client.get("/profile/")
-    assert response.status_code == 200
+PROFILE_DETAIL_URL = '/profile/'
 
 
 @pytest.fixture()
@@ -32,6 +29,11 @@ def profile_1(db, user_1):
                                                           b'these are the contents of the txt file'))
     profile_1.save()
     return profile_1
+
+
+@pytest.fixture()
+def max_profile_id(db):
+    return PersonalProfile.objects.all().count()
 
 
 @pytest.mark.django_db
@@ -68,3 +70,37 @@ class TestProfileUserRelation:
         test_user = User.objects.filter(username='user_1').first()
         test_user.delete()
         assert test_profile not in PersonalProfile.objects.all()
+
+
+@pytest.mark.django_db
+class TestProfileDetailView:
+    def test_detail_view_page_entrypoint(self, profile_1, user_1, client):
+        # Testing to see if a valid user gets a valid detail view page
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assert response.status_code == 200
+        assert response.context['user'] == test_user
+
+    def test_detail_view_returned_data(self, profile_1, user_1, client):
+        # Testing that the returned profile really is the one
+        # that its ID has passed through the URL
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assert response.context['personalprofile'].id == profile_1.id
+
+    def test_detail_view_page_for_invalid_profile_id(self, client, max_profile_id):
+        # Testing to see if for an invalid profile id, the response will be 404
+        # The id's start from 1 and increases by 1 for each profile, so the last profile will
+        # get the id of the number of profiles, so by adding 1 we promise that it will be
+        # an invalid ID
+        response = client.get(PROFILE_DETAIL_URL + str(max_profile_id + 1) + '/')
+        assert response.status_code == 404
+
+    def test_detail_view_template(self, profile_1, user_1, client):
+        # Testing to see if a valid user gets a valid detail view from response
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
+        assertTemplateUsed(response, 'personal_profile/personalprofile_detail.html')
