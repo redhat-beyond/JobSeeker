@@ -62,9 +62,12 @@
     
             <!-- Buttons -->
             <div class="d-flex justify-content-around text-center border-top border-bottom mb-4">
-                <button type="button" class="btn btn-link btn-lg">
-                    <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
-                </button>
+                <form action="{% url 'like-post' post.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link btn-lg">
+                        <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
+                    </button>
+                </form>
                 <form action="{% url 'comment-create' post.id %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-link btn-lg">
