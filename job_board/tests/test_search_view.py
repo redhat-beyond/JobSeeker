@@ -2,7 +2,7 @@ import pytest
 from pytest_django.asserts import assertTemplateUsed, assertTemplateNotUsed
 
 JOB_BOARD_URL = '/job_board/'
-POST_TEMPLATE = 'job_board/post.html'
+POST_TEMPLATE = 'feed/post.html'
 
 
 @pytest.fixture
