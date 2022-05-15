@@ -1,4 +1,3 @@
-from multiprocessing.dummy import Array
 from django.db import migrations
 from job_board.models.location import Location
 from job_board.resources.locations import LOCATIONS
