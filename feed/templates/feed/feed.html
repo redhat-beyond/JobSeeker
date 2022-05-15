@@ -1,6 +1,63 @@
 {% extends "jobseeker/base_template.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
+
+    {% if form %}
+        <div class="pt-5">
+            <div class="container d-flex justify-content-center">
+                <div class="card" style="min-width: 65%;">
+                    <h3 class="ms-4 mt-4">New Post</h3>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-1 col-form-label">
+                            <img src="{{ user.personalprofile.profile_pic.url }}"
+                            class="border rounded-circle ms-4" style="height: 50px; width: 50px;" />
+                        </div>
+                        <!-- Div trigger modal -->
+                        <div class="col-11" data-bs-toggle="modal" data-bs-target="#createNewPostModal">
+                            <a class="btn disabled mt-3 ms-3">What's on your mind...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="createNewPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-1 col-form-label">
+                                    <img src="{{ user.personalprofile.profile_pic.url }}"
+                                    class="border rounded-circle" style="height: 50px; width: 50px;" />
+                                </div>
+                                <div class="col-11">
+                                    <div class="form-group">
+                                        {{ form.title }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.content }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
     <div class="pt-5">
         {% for post in posts %}
