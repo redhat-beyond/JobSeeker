@@ -3,6 +3,7 @@ from feed.models import Post
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
+from feed.forms import PostForm
 
 
 USERNAME1 = 'username1'
@@ -46,6 +47,11 @@ def post(db, users):
     post = Post.posts.create(title=POST_TITLE, content=POST_CONTENT, author=users[0])
     post.save()
     return post
+
+
+@pytest.fixture
+def initial_posts_no(db):
+    return Post.posts.count()
 
 
 @pytest.fixture
@@ -160,6 +166,58 @@ class TestPostCreateView:
         # The new post ID should be as the amount of posts exists
         new_post_id = Post.posts.count()
         assert response.url == POST_DETAIL_URL + str(new_post_id) + '/'
+
+
+@pytest.mark.django_db
+class TestPostCreatePopUpView:
+
+    form_data = {'title': 'some title', 'content': 'some content...', }
+
+    def test_feed_doesnt_show_form_when_logged_out(self, client):
+        # Verify that for non authenticated user, a create new post form isnt
+        # displayed on the feed page
+        response = client.get(FEED_URL)
+        assert response.status_code == 200
+        template_names = set(tmpl.origin.template_name for tmpl in response.templates)
+        assert 'feed/feed.html' in template_names
+        assert response.context.get("form") is None
+
+    def test_feed_show_form_when_logged_in(self, logged_in_client):
+        # Verify that for an authnticated user, a create new post form
+        # is displayed on the feed page
+        response = logged_in_client.get(FEED_URL)
+        assert response.status_code == 200
+        template_names = set(tmpl.origin.template_name for tmpl in response.templates)
+        assert 'feed/feed.html' in template_names
+        assert isinstance(response.context.get("form"), PostForm)
+
+    def test_post_creation_using_feed_form(self, logged_in_client, initial_posts_no):
+        # Testing that a post creates successfully using the create new
+        # post form
+        response = logged_in_client.post(FEED_URL, self.form_data)
+        assert response.status_code == REDIRECT_URL_STATUS
+        assert response.url == FEED_URL
+        response = logged_in_client.get(response.url)
+        assert response.context['posts'].count() == initial_posts_no + 1
+        template_names = set(tmpl.origin.template_name for tmpl in response.templates)
+        assert 'feed/feed.html' in template_names
+
+    def test_post_redirected_when_logged_out(self, client, initial_posts_no):
+        # Testing that a post wasnt created for a non logged in user
+        response = client.post(FEED_URL, self.form_data)
+        assert response.status_code == REDIRECT_URL_STATUS
+        assert response.url == FEED_URL
+        response = client.get(response.url)
+        assert response.context['posts'].count() == initial_posts_no
+
+    def test_empty_form_is_redirected(self, logged_in_client, initial_posts_no):
+        # Testing that an invalid form wont cause a creation of a new post
+        response = logged_in_client.post(FEED_URL, {})
+        assert response.status_code == 200
+        form = response.context.get("form")
+        assert isinstance(form, PostForm)
+        assert not form.is_valid()
+        assert response.context['posts'].count() == initial_posts_no
 
 
 class TestLikeForNonLoggedUser:
