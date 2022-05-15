@@ -15,3 +15,6 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', args=(self.post_parent.id,))
+
+    def __str__(self):
+        return f'\'{self.content}\' on post \'{self.post_parent}\''

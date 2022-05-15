@@ -79,3 +79,18 @@ def LikeView(request, pk):
     else:
         messages.warning(request, "You must login in order to like a post")
         return redirect('login')
+
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    login_url = '/login/'
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.author:
+            return True
+        return False
+
+    def get_success_url(self):
+        messages.success(self.request, "Comment deleted successfully")
+        return reverse('feed')
