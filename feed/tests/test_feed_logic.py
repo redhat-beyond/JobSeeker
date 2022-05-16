@@ -56,7 +56,7 @@ def posts():
         ),
         (
             'Microsoft Is Hiring!',
-            'We are looking for a graphic designer to work at our Herzelia offices',
+            'We are looking for a graphic designer to work at our Herzliya offices',
             User.objects.get(username='Bill Gates').id
         ),
         (

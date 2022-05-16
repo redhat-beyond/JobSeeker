@@ -15,7 +15,7 @@ POSTS = [
     ],
     [
         'Microsoft Is Hiring!',
-        'We are looking for a graphic designer to work at our Herzelia offices',
+        'We are looking for a graphic designer to work at our Herzliya offices',
         'Bill Gates',
         True,
         'Graphic Designer',
