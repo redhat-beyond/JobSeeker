@@ -2,6 +2,7 @@
 {% block content %}
 <section class="section about-section gray-bg" id="about">
     <div class="container">
+        <button type="button" class="btn btn-success" href="{% url 'update_profile' %}">Update Profile</button>
         <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-6">
                 <div class="about-text go-to">
@@ -28,8 +29,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
                         <p class="m-0px font-w-600">  <a href="{{ personalprofile.resume.url }}">Resume</a></p>
-                    </div>
                 </div>
+                    </div>
             </div>
         </div>
     </div>
