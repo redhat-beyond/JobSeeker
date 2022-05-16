@@ -23,7 +23,7 @@ class AddSearchView(FormView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            posts = SearchEngine.search(self, form.save(commit=False))
+            posts = SearchEngine.search(form.save(commit=False))
             context = {'title': 'Job Board', 'results': posts, 'form': form}
         else:
             context = {'title': 'Job Board', 'form': form}

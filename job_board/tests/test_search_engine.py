@@ -89,7 +89,7 @@ class TestSearchEngine:
         post1 = create_posts[0]
         post2 = create_posts[1]
         pref1 = create_search_preferences[0]
-        posts = SearchEngine.search(self, pref1)
+        posts = SearchEngine.search(pref1)
         assert post1 in posts
         assert post2 not in posts
 
@@ -97,7 +97,7 @@ class TestSearchEngine:
         post1 = create_posts[0]
         post2 = create_posts[1]
         pref2 = create_search_preferences[1]
-        posts = SearchEngine.search(self, pref2)
+        posts = SearchEngine.search(pref2)
         assert post1 in posts
         assert post2 in posts
 
@@ -105,6 +105,6 @@ class TestSearchEngine:
         post1 = create_posts[0]
         post2 = create_posts[1]
         pref3 = create_search_preferences[2]
-        posts = SearchEngine.search(self, pref3)
+        posts = SearchEngine.search(pref3)
         assert post1 not in posts
         assert post2 not in posts
