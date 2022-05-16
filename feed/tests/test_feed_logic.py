@@ -11,6 +11,26 @@ def posts():
     POSTS = [
         (
             'Im Job Seeking!',
+            'Looking for a librarian opportunity',
+            User.objects.get(username='John Doe').id
+        ),
+        (
+            'Please help me find a job',
+            'Looking for a Graphic Designer opportunity',
+            User.objects.get(username='Jane Doe').id
+        ),
+        (
+            'I am looking for a job!',
+            'Looking for an electrician position',
+            User.objects.get(username='John Doe').id
+        ),
+        (
+            'Im a Job Seeker!',
+            'Looking for a secretary full time position',
+            User.objects.get(username='Jane Doe').id
+        ),
+        (
+            'Im Job Seeking!',
             'Looking for a django web developing opportunity',
             User.objects.get(username='Jane Doe').id
         ),
@@ -18,6 +38,26 @@ def posts():
             'Im a Job Seeker!',
             'Looking for a delivery driver opportunity',
             User.objects.get(username='John Doe').id
+        ),
+        (
+            'Apple Is Hiring!',
+            'We are looking for a talented human resources specialist to work at our Tel Aviv office',
+            User.objects.get(username='Tim Cook').id
+        ),
+        (
+            'Microsoft Is Hiring!',
+            'We are looking for an accountant to work at our Tel Aviv office',
+            User.objects.get(username='Bill Gates').id
+        ),
+        (
+            'Apple Is Hiring!',
+            'We are looking for a database administrator to work at our Tel Aviv office',
+            User.objects.get(username='Tim Cook').id
+        ),
+        (
+            'Microsoft Is Hiring!',
+            'We are looking for a graphic designer to work at our Herzelia offices',
+            User.objects.get(username='Bill Gates').id
         ),
         (
             'Apple Is Hiring!',
