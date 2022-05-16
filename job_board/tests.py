@@ -7,7 +7,7 @@ import pytest
 @pytest.fixture
 def create_data_models_instances():
     job_type = JobType.objects.create(text='Chef')
-    location = Location.objects.create(name='Eilat', latitude=29.559191910075217, longitude=34.95283437084102)
+    location = Location.objects.create(name='city', latitude=29.559191910075217, longitude=34.95283437084102)
     pref = Preference.objects.create(
         job_type=JobType.objects.first(),
         location=Location.objects.first(),

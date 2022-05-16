@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     def generate_location_data(apps, schema_editor):
+        LOCATIONS.sort()
         for location in LOCATIONS:
             Location(name=location[0], latitude=location[1], longitude=location[2]).save()
 

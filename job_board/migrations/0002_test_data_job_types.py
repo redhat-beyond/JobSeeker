@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     def generate_jobType_data(apps, schema_editor):
+        JOB_TYPES.sort()
         for jobType in JOB_TYPES:
             JobType(text=jobType).save()
 
