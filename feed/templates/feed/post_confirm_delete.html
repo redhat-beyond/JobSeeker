@@ -1,0 +1,11 @@
+{% extends "jobseeker/base_template.html" %}
+{% block content %}
+    <div class="container my-5 d-flex justify-content-center p-3 border" style="background: white; width: 35%;">
+        <form method="post">{% csrf_token %}
+            <p class="font-monospace">Are you sure you want to delete post "{{ post }}"?</p>
+            {{ form }}
+            <input type="submit" class="btn btn-danger" value="Confirm">
+            <a class="btn btn-outline-secondary ms-3" href="{% url 'feed' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock content %}

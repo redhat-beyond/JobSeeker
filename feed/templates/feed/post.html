@@ -14,11 +14,24 @@
                     <p class="text-muted d-block" style="margin-top: -6px;">
                         <small>{{ post.date_posted }}</small>
                 </div>
+                <div class="dropdown position-absolute top-0 end-0">
+                    <button class="btn " type="button" data-bs-toggle="dropdown" >
+                        <img src="{% static 'jobseeker/icons/three-dots-vertical.svg' %}" />
+                    </button>
+                    {% if user.is_authenticated %}
+                        {% if post.author == user %}
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="{% url 'post-delete' post.id %}">Delete</a></li>
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
 
             <!-- Description -->
             <div>
-                <h5>{{post.title}}</h3>
+                <h5><a class="text-decoration-none text-dark" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
                 <p>
                     {{ post.content }}
                 </p>
@@ -49,12 +62,18 @@
     
             <!-- Buttons -->
             <div class="d-flex justify-content-around text-center border-top border-bottom mb-4">
-                <button type="button" class="btn btn-link btn-lg">
-                    <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
-                </button>
-                <button type="button" class="btn btn-link btn-lg">
-                    <img src="{% static 'jobseeker/icons/comment.svg' %}" class="me-2" /> Comment
-                </button>
+                <form action="{% url 'like-post' post.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link btn-lg">
+                        <img src="{% static 'jobseeker/icons/like.svg' %}" class="me-2" /> Like
+                    </button>
+                </form>
+                <form action="{% url 'comment-create' post.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link btn-lg">
+                        <img src="{% static 'jobseeker/icons/comment.svg' %}" class="me-2" /> Comment
+                    </button>
+                </form>
                 {% if post.is_job_offer %}
                     <button type="button" class="btn btn-lg" id="applybutton">
                         Apply
@@ -69,14 +88,27 @@
                     <img src="{{ comment.author.personalprofile.profile_pic.url }}"
                     class="border rounded-circle me-2" style="height: 40px; width: 40px;" />
                 </a>
-                <div>
-                    <div class="bg-light rounded-3 px-3 py-1">
+                <div class="bg-light rounded-3 px-3 py-1 d-flex">
+                    <div class="d-inline">
                         <a href="" class="text-dark mb-0">
                             <strong>{{comment.author}}</strong>
                         </a>
                         <p class="text-muted d-block mb-0">
                             <small>{{comment.content}}</small>
                         </p>
+                    </div>
+                    <div class="dropdown d-inline">
+                        <button class="btn" type="button" data-bs-toggle="dropdown" >
+                            <img src="{% static 'jobseeker/icons/three-dots-vertical.svg' %}" />
+                        </button>
+                        {% if user.is_authenticated %}
+                            {% if comment.author == user %}
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                </ul>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

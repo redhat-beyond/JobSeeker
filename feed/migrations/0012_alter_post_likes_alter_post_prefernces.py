@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('job_board', '0004_test_data_years_of_experiences'),
+        ('job_board', '0004_preference_work_schedule_and_more'),
         ('feed', '0011_comments'),
     ]
 

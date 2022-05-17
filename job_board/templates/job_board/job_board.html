@@ -1,0 +1,18 @@
+{% extends "jobseeker/base_template.html" %}
+{% block content %}
+    <div class="search_bar">
+        <h2>Job Board</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="search">
+        </form>
+    </div>
+    <div class="search_results">
+        {% if results%}
+            {% for post in results %}
+                {% include "job_board/post.html" %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock content %}
