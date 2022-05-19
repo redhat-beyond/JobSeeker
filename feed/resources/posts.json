@@ -1,0 +1,88 @@
+{
+    "POSTS": [
+        {
+            "title":"Microsoft Is Hiring!",
+            "content":"We are looking for a delivry driver to work at our Haifa office",
+            "author":"Bill Gates",
+            "is_job_offer": true,
+            "prefernces":"Delivery driver"
+        },
+        {
+            "title":"Apple Is Hiring!",
+            "content":"We are looking for a web developer to work at our Tel Aviv office",
+            "author":"Tim Cook",
+            "is_job_offer": true,
+            "prefernces":"Web developer"
+        },
+        {
+            "title":"Microsoft Is Hiring!",
+            "content":"We are looking for a graphic designer to work at our Herzliya offices",
+            "author":"Bill Gates",
+            "is_job_offer": true,
+            "prefernces":"Graphic Designer"
+        },
+        {
+            "title":"Apple Is Hiring!",
+            "content":"We are looking for a database administrator to work at our Tel Aviv office",
+            "author":"Tim Cook",
+            "is_job_offer": true,
+            "prefernces":"Database Administrator"
+        },
+        {
+            "title":"Microsoft Is Hiring!",
+            "content":"We are looking for an accountant to work at our Tel Aviv office",
+            "author":"Bill Gates",
+            "is_job_offer": true,
+            "prefernces":"Accountant"
+        },
+        {
+            "title":"Apple Is Hiring!",
+            "content":"We are looking for a talented human resources specialist to work at our Tel Aviv office",
+            "author":"Tim Cook",
+            "is_job_offer": true,
+            "prefernces":"Human resources"
+        },
+        {
+            "title":"Im a Job Seeker!",
+            "content":"Looking for a delivery driver opportunity",
+            "author":"John Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        },
+        {
+            "title":"Im Job Seeking!",
+            "content":"Looking for a django web developing opportunity",
+            "author":"Jane Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        },
+        {
+            "title":"Im a Job Seeker!",
+            "content":"Looking for a secretary full time position",
+            "author":"Jane Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        },
+        {
+            "title":"I am looking for a job!",
+            "content":"Looking for an electrician position",
+            "author":"John Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        },
+        {
+            "title":"Please help me find a job",
+            "content":"Looking for a Graphic Designer opportunity",
+            "author":"Jane Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        },
+        {
+            "title":"Im Job Seeking!",
+            "content":"Looking for a librarian opportunity",
+            "author":"John Doe",
+            "is_job_offer": false,
+            "prefernces":null
+        }
+    ]
+}
