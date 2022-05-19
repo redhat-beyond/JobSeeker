@@ -1,3 +1,4 @@
+import json
 from django.db import migrations
 from feed.models.post import Post
 from job_board.models.preference import Preference, JobType
@@ -5,7 +6,6 @@ from job_board.models.preference import Preference, JobType
 from job_board.resources.locations import LOCATIONS
 import django.contrib.auth
 User = django.contrib.auth.get_user_model()
-import json
 
 
 class Migration(migrations.Migration):
@@ -35,10 +35,10 @@ class Migration(migrations.Migration):
                 content=post['content'],
                 author=User.objects.filter(username=post['author']).first(),
                 is_job_offer=post['is_job_offer'],
-                prefernces=Preference.objects.filter(job_type=JobType.objects.filter(text=post['prefernces']).first()).first()
+                prefernces=Preference.objects.filter(
+                    job_type=JobType.objects.filter(text=post['prefernces']).first()).first()
             ).save()
 
     operations = [
         migrations.RunPython(generate_posts),
     ]
-
