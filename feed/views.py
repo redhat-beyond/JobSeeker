@@ -5,12 +5,29 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from .forms import PostForm
 
 
 def feed(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return redirect('feed')
+        else:
+            form = PostForm()
+    else:
+        if request.method == "POST":
+            return redirect('feed')
+        form = None
+
     context = {
         'posts': Post.posts.main_feed(),
-        'title': 'Feed'
+        'title': 'Feed',
+        'form': form,
     }
     return render(request, 'feed/feed.html', context)
 
