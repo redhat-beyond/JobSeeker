@@ -10,5 +10,5 @@ class ProfileDetailView(DetailView):
 
 class ProfileUpdateView(UpdateView):
     model = PersonalProfile
-    form_class= ProfileForm
+    form_class = ProfileForm
     template_name = 'profile_update_form.html'
