@@ -1,4 +1,6 @@
 from django.views.generic import DetailView
+from django.views.generic.edit import UpdateView
+from personal_profile.forms import ProfileForm
 from .models import PersonalProfile
 from django.shortcuts import render
 
@@ -6,6 +8,7 @@ from django.shortcuts import render
 class ProfileDetailView(DetailView):
     model = PersonalProfile
 
-def updateProfile(request):
-    context= {}
-    return render(request, 'templates/personal_profile/update_form.html')
+class ProfileUpdateView(UpdateView):
+     model = PersonalProfile
+     form_class= ProfileForm
+     template_name = 'profile_update_form.html'

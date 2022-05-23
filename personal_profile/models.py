@@ -1,5 +1,6 @@
 # from tkinter.tix import Tree
 import os
+from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -17,6 +18,10 @@ class PersonalProfile(models.Model):
     birth_date = models.DateField(null=True)
     profile_pic = models.ImageField(null=True, blank=True, upload_to='profile_pics')
     resume = models.FileField(null=True, upload_to='resumes')
+
+    def get_absolute_url(self):
+        return reverse('profile-detail', args=(self.id,))
+
 
 
 @receiver(models.signals.post_delete, sender=PersonalProfile)
