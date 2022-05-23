@@ -1,6 +1,6 @@
 from django.views.generic import DetailView
 from django.views.generic.edit import UpdateView
-from personal_profile.forms import ProfileForm
+from .forms import ProfileForm
 from .models import PersonalProfile
 
 
