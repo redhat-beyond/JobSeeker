@@ -23,7 +23,6 @@ class PersonalProfile(models.Model):
         return reverse('profile-detail', args=(self.id,))
 
 
-
 @receiver(models.signals.post_delete, sender=PersonalProfile)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
 
