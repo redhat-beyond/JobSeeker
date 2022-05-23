@@ -2,8 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-
     <div class="container d-flex justify-content-center mt-5 py-5 px-1">
+		{% if user.is_authenticated %}
+		<h1> You are already authenticated! </h1>
+		{% else %}
         <form class="border p-5" method="post" action="{% url 'login' %}" style="min-width: 65%; background-color: white;">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -14,5 +16,6 @@
                 <input class="btn btn-light" type="submit" value="Login">
             </div>
         </form>
+		{% endif %}
     </div>
 {% endblock content %}
