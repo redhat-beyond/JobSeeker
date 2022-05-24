@@ -116,7 +116,7 @@ class TestProfileUpdateView:
         test_user = User.objects.filter(username='user_1').first()
         client.force_login(test_user)
         update_profile_path = PROFILE_DETAIL_URL + str(test_profile.id) + UPDATE_PROFILE_PATH
-        new_fields= {
+        new_fields = {
             'company': 'Update Test Company',
             'birth_date': datetime.date(1992, 12, 10),
             'about': 'Update Test About',
