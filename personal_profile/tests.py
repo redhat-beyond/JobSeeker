@@ -1,5 +1,6 @@
 import pytest
 import datetime
+from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import PersonalProfile
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -9,6 +10,7 @@ from pytest_django.asserts import assertTemplateUsed
 GENERAL_IMAGE_PATH = '/__w/JobSeeker/JobSeeker/personal_profile/static/personal_profile/images/'
 IMAGE_PATH = 'personal_profile/static/personal_profile/images/profile_pics/test_image.jpg'
 PROFILE_DETAIL_URL = '/profile/'
+UPDATE_PROFILE_PATH= '/update/'
 
 
 @pytest.fixture()
@@ -104,3 +106,26 @@ class TestProfileDetailView:
         client.force_login(test_user)
         response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + '/')
         assertTemplateUsed(response, 'personal_profile/personalprofile_detail.html')
+
+
+@pytest.mark.django_db
+class TestProfileUpdateView:
+    def test_update_view_profile(self, profile_1, user_1, client):
+        # Testing to see if the changes made for company, birth_date and about fields
+        # will result with response code of 302 
+        test_profile = PersonalProfile.objects.filter(user=user_1).first()
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        update_profile_path = PROFILE_DETAIL_URL + str(test_profile.id) + UPDATE_PROFILE_PATH
+        response = client.post(update_profile_path,
+            {'company': 'Update Test Company', 'birth_date': datetime.date(1992, 12, 10), 
+            'about': 'Update Test About' , 'profile_pic': test_profile.profile_pic , 
+            'resume': test_profile.resume})
+        assert response.status_code == 302
+
+    def test_update_view_template(self, profile_1, user_1, client):
+        # Testing to see if a valid user gets a valid update view from response
+        test_user = User.objects.filter(username='user_1').first()
+        client.force_login(test_user)
+        response = client.get(PROFILE_DETAIL_URL + str(profile_1.id) + UPDATE_PROFILE_PATH)
+        assertTemplateUsed(response, 'profile_update_form.html')

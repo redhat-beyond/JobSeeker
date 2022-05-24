@@ -22,7 +22,7 @@ class PersonalProfile(models.Model):
     def get_absolute_url(self):
         return reverse('profile-detail', args=(self.id,))
 
-
+"""
 @receiver(models.signals.post_delete, sender=PersonalProfile)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
 
@@ -56,3 +56,4 @@ def auto_delete_file_when_change(sender, instance, **kwargs):
     if not old_resume == new_resume:
         if os.path.isfile(old_resume.path):
             os.remove(old_resume.path)
+"""
