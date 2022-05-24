@@ -116,12 +116,13 @@ class TestProfileUpdateView:
         test_user = User.objects.filter(username='user_1').first()
         client.force_login(test_user)
         update_profile_path = PROFILE_DETAIL_URL + str(test_profile.id) + UPDATE_PROFILE_PATH
-        response = client.post(update_profile_path,
-                                {'company': 'Update Test Company', 
-                                'birth_date': datetime.date(1992, 12, 10),
-                                'about': 'Update Test About', 
-                                'profile_pic': test_profile.profile_pic,
-                                'resume': test_profile.resume})
+        new_fields= {
+            'company': 'Update Test Company',
+            'birth_date': datetime.date(1992, 12, 10),
+            'about': 'Update Test About',
+            'profile_pic': test_profile.profile_pic,
+            'resume': test_profile.resume}
+        response = client.post(update_profile_path, new_fields)
         assert response.status_code == 302
 
     def test_update_view_template(self, profile_1, user_1, client):
