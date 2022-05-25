@@ -2,7 +2,12 @@
 {% block content %}
 <section class="section about-section gray-bg" id="about">
     <div class="container">
-        <button type="button" class="btn btn-success" href="{% url 'update-detail' personalprofile.id %}">Update Profile</button>
+        <button onclick= "redirectButton()" type="button" class="btn btn-success" href="{% url 'update-detail' personalprofile.id %}">Update Profile</button>
+        <script>
+            function redirectButton() {
+              window.location.href="{% url 'update-detail' personalprofile.id %}";  
+            }
+          </script>
         <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-6">
                 <div class="about-text go-to">
