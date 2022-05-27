@@ -2,6 +2,12 @@
 {% block content %}
 <section class="section about-section gray-bg" id="about">
     <div class="container">
+        <button onclick= "redirectButton()" type="button" class="btn btn-success" href="{% url 'update-detail' personalprofile.id %}">Update Profile</button>
+        <script>
+            function redirectButton() {
+              window.location.href="{% url 'update-detail' personalprofile.id %}";  
+            }
+          </script>
         <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-6">
                 <div class="about-text go-to">
@@ -11,6 +17,7 @@
                         <div class="col-md-6">
                             <div class="media">
                                 <h6 class="theme-color lead"><b>Company: </b>{{ personalprofile.company }}</h6>
+                                <h6 class="theme-color lead"><b>Birth Date: </b>{{ personalprofile.birth_date }}</h6>
                             </div>
                         </div>
                     </div>
@@ -28,8 +35,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
                         <p class="m-0px font-w-600">  <a href="{{ personalprofile.resume.url }}">Resume</a></p>
-                    </div>
                 </div>
+                    </div>
             </div>
         </div>
     </div>
